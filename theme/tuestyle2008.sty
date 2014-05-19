@@ -1,0 +1,72 @@
+\ProvidesPackage{tuestyle2008}%
+  [2009/06/18 v3.0 TU/e 2008 style support for fonts, colors and logos]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{graphicx}
+\RequirePackage{ifthen}
+\RequirePackage{xcolor}
+
+% Activate the default TU/e fonts.
+\renewcommand{\rmdefault}{zmb}
+\renewcommand{\sfdefault}{zmb}
+\renewcommand{\ttdefault}{pcr}
+
+% Define the TU/e colors.
+% Main Colours:
+\definecolor{tuepmswarmred}{rgb}{0.969,0.192,0.192}
+\definecolor{tuepmsprocesscyan}{rgb}{0.000,0.635,0.871}
+\definecolor{tuepms206}{rgb}{0.839,0.000,0.290}
+\definecolor{tuepms300}{rgb}{0.000,0.400,0.800}
+\definecolor{tuepms226}{rgb}{0.839,0.000,0.482}
+\definecolor{tuepms253}{rgb}{0.678,0.125,0.678}
+\definecolor{tuepms2748}{rgb}{0.063,0.063,0.451}
+% Support Colours:
+\definecolor{tuepms137}{rgb}{1.000,0.604,0.000}
+\definecolor{tuepmsyellow012}{rgb}{1.000,0.867,0.000}
+\definecolor{tuepms396}{rgb}{0.808,0.875,0.000}
+\definecolor{tuepms375}{rgb}{0.518,0.824,0.000}
+\definecolor{tuepmsgreen}{rgb}{0.000,0.675,0.510}
+\definecolor{tuepms3135}{rgb}{0.000,0.573,0.710}
+% Alternative, more common, names for some of these colours:
+\definecolor{tuewarmred}{rgb}{0.969,0.192,0.192}
+\definecolor{tueprocesscyan}{rgb}{0.000,0.635,0.871}
+\definecolor{tuecyan}{rgb}{0.000,0.635,0.871}
+\definecolor{tuered}{rgb}{0.839,0.000,0.290}
+\definecolor{tueblue}{rgb}{0.000,0.400,0.800}
+\definecolor{tuedarkblue}{rgb}{0.063,0.063,0.451}
+\definecolor{tueorange}{rgb}{1.000,0.604,0.000}
+\definecolor{tueyellow}{rgb}{1.000,0.867,0.000}
+\definecolor{tuelightgreen}{rgb}{0.518,0.824,0.000}
+\definecolor{tuegreen}{rgb}{0.000,0.675,0.510}
+
+% Use \TUElogo to insert the logo.
+\newsavebox{\sbTUElogo}
+\sbox{\sbTUElogo}%
+   {\includegraphics[height=0.79cm]{logos/tuelogo}}
+\newcommand{\TUElogo}{\usebox{\sbTUElogo}}
+
+% Commands for the department logos.
+\newcommand{\deptlogo}[1]{
+ \fontfamily{zlo}\selectfont/%
+ \ifthenelse{\equal{#1}{ele}}{e}{}%
+ \ifthenelse{\equal{#1}{eleuk}}{\bfseries e}{}%
+ \ifthenelse{\equal{#1}{win}}{k}{}%
+ \ifthenelse{\equal{#1}{winuk}}%
+   {\fontfamily{zmb}\selectfont\bfseries\,department of mathematics and 
+    computer science}{}%
+ \ifthenelse{\equal{#1}{bmt}}{mh\fontsize{4.5}{5pt}\selectfont j}{}%
+ \ifthenelse{\equal{#1}{bmtuk}}{\bfseries mh\fontsize{4.5}{5pt}\selectfont j}{}%
+ \ifthenelse{\equal{#1}{bwk}}{b}{}%
+ \ifthenelse{\equal{#1}{bwkuk}}{\bfseries b}{}%
+ \ifthenelse{\equal{#1}{id}}{d}{}%
+ \ifthenelse{\equal{#1}{iduk}}{\bfseries d}{}%
+ \ifthenelse{\equal{#1}{chem}}{s}{}%
+ \ifthenelse{\equal{#1}{chemuk}}{\bfseries s}{}%
+ \ifthenelse{\equal{#1}{tm}}{t}{}%
+ \ifthenelse{\equal{#1}{tmuk}}{\bfseries t}{}%
+ \ifthenelse{\equal{#1}{phys}}{n}{}%
+ \ifthenelse{\equal{#1}{physuk}}{\bfseries n}{}%
+ \ifthenelse{\equal{#1}{wtb}}{w}{}%
+ \ifthenelse{\equal{#1}{wtbuk}}{\bfseries w}{}%
+ \ifthenelse{\equal{#1}{none}}{}{}%
+}

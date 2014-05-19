@@ -1,0 +1,344 @@
+\RequirePackage{calc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{ifthen}
+
+\newif\ifbeamer@official
+\beamer@officialtrue
+\DeclareOptionBeamer{official}[false]{\csname beamer@official#1\endcsname}
+
+\newcommand{\dept}{none}
+\DeclareOptionBeamer{department}{\renewcommand{\dept}{#1}}
+
+\newif\ifbeamer@innovation
+\beamer@innovationtrue
+\DeclareOptionBeamer{innovation}[true]{\csname beamer@innovation#1\endcsname}
+
+\newif\ifbeamer@realpagenumbers
+\beamer@realpagenumbersfalse
+\DeclareOptionBeamer{realpagenumbers}[true]{\csname beamer@realpagenumbers#1\endcsname}
+
+\newif\ifbeamer@tocslides
+\beamer@tocslidesfalse
+\DeclareOptionBeamer{tocslides}[false]{\csname beamer@tocslides#1\endcsname}
+
+\newcommand{\statustext}{}
+\DeclareOptionBeamer{statustext}{\renewcommand{\statustext}{#1}}
+
+\newcommand{\titlelogos}{}
+\DeclareOptionBeamer{titlelogo}{\renewcommand{\titlelogos}{#1}}
+
+\newcommand{\titlebgimage}{}
+\DeclareOptionBeamer{titlebgimage}{\renewcommand{\titlebgimage}{#1}}
+
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\newcommand{\drawbackground}[1][full]{%
+    \begin{pgfpicture}{0cm}{0cm}{\the\paperwidth}{\the\paperheight}
+                                % Do some clipping first
+                                % Very annoying otherwise with psnup
+        \fontsize{12}{12}\selectfont
+
+        \ifthenelse{\equal{\dept}{ele}}{\renewcommand{\dept}{/e}}{}
+        \ifthenelse{\equal{\dept}{eleuk}}{\renewcommand{\dept}{/\bfseries e}}{}
+        \ifthenelse{\equal{\dept}{win}}{\renewcommand{\dept}{/k}}{}
+        \ifthenelse{\equal{\dept}{winuk}}{\renewcommand{\dept}{/\fontfamily{zmb}\selectfont\bfseries\,department of mathematics and computer science}}{}
+        \ifthenelse{\equal{\dept}{bmt}}{\renewcommand{\dept}{/mh\fontsize{4.5}{5pt}\selectfont j}}{}
+        \ifthenelse{\equal{\dept}{bmtuk}}{\renewcommand{\dept}{/\bfseries mh\fontsize{4.5}{5pt}\selectfont j}}{}
+        \ifthenelse{\equal{\dept}{bwk}}{\renewcommand{/\dept}{b}}{}
+        \ifthenelse{\equal{\dept}{bwkuk}}{\renewcommand{\dept}{/\bfseries b}}{}
+        \ifthenelse{\equal{\dept}{id}}{\renewcommand{\dept}{/d}}{}
+        \ifthenelse{\equal{\dept}{iduk}}{\renewcommand{\dept}{/\bfseries d}}{}
+        \ifthenelse{\equal{\dept}{chem}}{\renewcommand{\dept}{/s}}{}
+        \ifthenelse{\equal{\dept}{chemuk}}{\renewcommand{\dept}{/\bfseries s}}{}
+        \ifthenelse{\equal{\dept}{tm}}{\renewcommand{\dept}{/t}}{}
+        \ifthenelse{\equal{\dept}{tmuk}}{\renewcommand{\dept}{/\bfseries t}}{}
+        \ifthenelse{\equal{\dept}{phys}}{\renewcommand{\dept}{/n}}{}
+        \ifthenelse{\equal{\dept}{physuk}}{\renewcommand{\dept}{/\bfseries n}}{}
+        \ifthenelse{\equal{\dept}{wtb}}{\renewcommand{\dept}{/w}}{}
+        \ifthenelse{\equal{\dept}{wtbuk}}{\renewcommand{\dept}{/\bfseries w}}{}
+
+        \ifthenelse{\equal{\dept}{none}}{\renewcommand{\dept}{}}{}
+
+
+        \ifthenelse{\equal{#1}{full}}{
+          % white surface right of diagonal line
+          \pgfsetcolor{white}
+          \pgfpathmoveto{\pgfpoint{\the\paperwidth-3.23cm}{0cm}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-0.4cm}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth}{0cm}}
+          \pgfusepath{fill}
+
+          \pgfsetcolor{themecolor}
+          % red surface at top of the slide
+          \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-2.52cm}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-1.417cm}{\the\paperheight-2.52cm}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-0.7118cm}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight}}
+          \pgfusepath{fill}
+        }{}
+
+        % page number and TU/e logo
+        \ifbeamer@official
+          \pgfsetcolor{white}
+          \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight-1.889cm}}
+          \pgfusepath{fill}
+            % horizontal line
+            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.889cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.889cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.883cm}}
+            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.883cm}}
+            \pgfusepath{fill}              % TU/e logo
+            \pgftext[at=\pgfpoint{\the\paperwidth-0.504cm}{0.567cm},right,base]{%
+              \includegraphics[height=0.567cm]{tuelogo}
+            }
+            \pgfsetcolor{tuedarkblue}
+            % red surface at top of the slide
+            \pgfpathmoveto{\pgfpoint{\the\paperwidth-2.488cm-0.163cm}{0cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth}{0cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth}{0.567cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth-2.488cm}{0.567cm}}
+            \pgfusepath{fill}
+        \else
+          \pgfsetcolor{white}
+          \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight-1.13cm}}
+          \pgfusepath{fill}
+          % horizontal line
+          \pgfsetcolor{themecolor}
+%          \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.8cm}}
+%          \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.8cm}}
+%          \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.79cm}}
+%          \pgfpathlineto{\pgfpoint{0}{\the\paperheight-1.79cm}}
+%          \pgfusepath{fill}
+            % page number
+            \ifthenelse{\equal{#1}{full}}{
+              % draw frame number
+              \pgftext[at=\pgfpoint{\the\paperwidth-0.189cm}{\the\paperheight-1cm},right,base]
+                {\tiny\insertframenumber/\inserttotalframenumber}%
+              % possibly draw page number
+              \ifbeamer@realpagenumbers
+                \pgfsetcolor{themecolorlight}
+                \pgftext[at=\pgfpoint{\the\paperwidth-0.189cm}{\the\paperheight-0.7cm},right,base]
+                  {\tiny\insertpagenumber/\pageref{LastPage}}%
+              \fi
+            }{}
+            % TU/e logo
+            \pgftext[at=\pgfpoint{\the\paperwidth-0.189cm}{0.189cm},right,base]{%
+              \includegraphics[height=0.567cm]{tuelogo}
+            }
+        \fi
+
+        \ifbeamer@official
+%            % diagonal line
+%            \pgfsetcolor{tuered}
+%            \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.13cm}{0cm}}
+%            \pgfpathlineto{\pgfpoint{\the\paperwidth-0.64cm}{\the\paperheight}}
+%            \pgfpathlineto{\pgfpoint{\the\paperwidth-0.62cm}{\the\paperheight}}
+%            \pgfpathlineto{\pgfpoint{\the\paperwidth-5.11cm}{0cm}}
+%            \pgfusepath{fill}
+          % page number
+          \ifnum\thepage=1\relax\else
+            \pgftext[at=\pgfpoint{\the\paperwidth-2.425cm}{0.159cm},left,base]{\begin{minipage}{2.2677cm}\color{white}\fontsize{6}{6}\selectfont \@date \hfill PAGE \thepage\end{minipage}}%
+          \fi
+        \fi
+
+        % department text at bottom of slide
+        \pgftext[at=\pgfpoint{0.252cm}{0.252cm},left,base]{%
+          \color{tuedarkblue}\fontfamily{zlo}\selectfont%
+            \tiny%
+            \dept
+          \hspace{1.26cm}\color{tuered}\fontfamily{zmb}\selectfont\tiny\statustext
+          }%
+        \pgfsetcolor{black}
+        \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight}}
+        \pgfusepath{stroke}
+
+    \end{pgfpicture}%
+}
+
+
+
+\newcommand{\drawtitlebackground}{%
+    \begin{pgfpicture}{0cm}{0cm}{\the\paperwidth}{\the\paperheight}
+                                % Do some clipping first
+                                % Very annoying otherwise with psnup
+
+        \normalsize\selectfont
+        % white surface right of diagonal line
+        \pgfsetcolor{white}
+        \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.67cm}{0cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-2.84cm}{\the\paperheight}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{0cm}}
+        \pgfusepath{fill}
+
+        % Logo
+        \ifthenelse{\equal{\titlelogos}{}}{%
+          \relax
+        }
+        {
+          \pgftext[at=\pgfpoint{\the\paperwidth/2}{\the\paperheight-1cm},center,center]{\includegraphics[height=1.26cm]{\titlelogos}}%
+        }
+
+        % Background image
+        \ifthenelse{\equal{\titlebgimage}{}}{%
+        \pgfsetcolor{themecolor}
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+        \pgfusepath{fill}
+        \pgfsetcolor{tuedarkblue}
+        % surface left of main image
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-3.21cm}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+        \pgfusepath{fill}
+        }{
+        \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm},right,base]{\includegraphics[height=5.57cm]{\titlebgimage}}%
+        \pgfsetcolor{themecolor}
+        % surface left of main image
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-3.2cm}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+        \pgfusepath{fill}
+        }
+
+
+
+        % diagonal line
+        \pgfsetcolor{tuered}
+        \ifdim\beamer@paperheight=9.00cm%
+	  \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.24cm}{0cm}}
+	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
+	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.63cm}{\the\paperheight}}
+	  \pgfpathlineto{\pgfpoint{\the\paperwidth-5.22cm}{0cm}}
+        \else
+	  \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.42cm}{0cm}}
+	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.65cm}{\the\paperheight}}
+	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
+	  \pgfpathlineto{\pgfpoint{\the\paperwidth-5.4cm}{0cm}}
+        \fi
+        \pgfusepath{fill}
+        % lower horizontal line
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+        \pgfusepath{fill}
+        % upper horizontal line
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+        \pgfusepath{fill}
+
+        % TU/e slogan: Where innovation starts
+        \ifbeamer@innovation
+          \pgftext[at=\pgfpoint{\the\paperwidth-2.99cm}{0.39cm},right,top]{\color{tuedarkblue}\normalfont\normalsize\tiny\selectfont\bfseries Where innovation starts}%
+        \fi
+
+        % Title
+        \pgftext[at=\pgfpoint{1cm}{\the\paperheight-3.15cm},left,top]{\color{white}\normalfont\fontsize{18}{18}\selectfont\bfseries%
+        \begin{minipage}[b]{8.19cm}
+        \raggedright
+        \inserttitle
+
+        \mbox{}\\[0.125cm]
+        \fontsize{9}{9}\selectfont\mdseries
+        \insertauthor
+        \end{minipage}
+        }%
+
+        % page number
+        \ifnum\thepage=1\relax\else
+        \pgftext[at=\pgfpoint{\the\paperwidth-0.76cm}{\the\paperheight-2.39cm},left,base]{\thepage}%
+        \fi
+        % TU/e logo
+        \pgftext[at=\pgfpoint{\the\paperwidth-6.45cm}{\the\paperheight-7.87cm},left,top]{%
+          \includegraphics[height=1.0cm]{tuelogo}
+        }
+
+        \pgftext[at=\pgfpoint{0.441cm}{0.441cm},left,base]{%
+          \color{tuered}\tiny\@date}%
+        \pgfsetcolor{black}
+        \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight}}
+        \pgfusepath{stroke}
+
+    \end{pgfpicture}%
+}
+
+\usebackgroundtemplate{\drawbackground}
+
+
+\useheadtemplate{}
+
+\usefoottemplate{}
+
+\useitemizeitemtemplate{\tiny\raise1.5pt\hbox{\color{beamerstructure}$\blacktriangleright$}}
+\usesubitemizeitemtemplate{\tiny\raise1.5pt\hbox{\color{beamerstructure}\textbullet}}
+\usesubsubitemizeitemtemplate{\tiny\raise1.5pt\hbox{\color{beamerstructure}\textbullet}}
+
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+
+\newlength{\frametitlewidth}
+\newlength{\frametitleheight}
+
+\setbeamercolor{frametitle}{fg=white,bg=themecolor}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamertemplate{frametitle}
+{
+\setlength{\frametitlewidth}{10.5cm}
+\setlength{\frametitleheight}{1.5cm}
+\ifbeamer@official
+\setlength{\frametitleheight}{2.2cm}
+\fi
+\vspace*{-\frametitleheight}\begin{minipage}[t][\frametitleheight-1cm][b]{\frametitlewidth}
+\raggedright\insertframetitle\par
+\end{minipage}
+}
+
+\userightsidebartemplate{0cm}{
+%      \vfill
+%      \hskip -2cm
+%      \begin{beamercolorbox}[wd=2cm,leftskip=5pt,rightskip=1pt plus1fil,vmode]{}
+%                \vbox{}%
+%                \hfill\footnotesize\insertframenumber /\inserttotalframenumber\hskip1em\hfill\par%
+%                \vbox{}%
+%                \vskip-1.5ex%
+%      \end{beamercolorbox}
+}
+
+\setbeamertemplate{headline}
+{
+  \ifbeamer@official
+    \vspace{2.1cm}
+  \else
+    \vspace{1.3cm}
+  \fi
+}
+
+\mode<all>
+
+\ifbeamer@tocslides
+  \AtBeginSection[] {
+    \bgroup
+    \usebackgroundtemplate{\drawbackground[plain]}
+    \hypersetup{
+      hidelinks
+    }
+    \setbeamercolor{section in toc}{use=alerted text,fg=alerted text.fg}
+    \setbeamercolor{section in toc shaded}{fg=black}
+    \setbeamertemplate{section in toc shaded}[default][100]
+    \begin{frame}{}
+      \vspace*{-3em}
+      \tableofcontents[currentsection]
+    \end{frame}
+    \egroup
+    \addtocounter{framenumber}{-1}
+  }
+\fi

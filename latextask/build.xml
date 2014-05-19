@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="LatexTask" basedir="." default="jar">
+
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="build" />
+    <property name="lib.dir" value="lib" />
+
+    <target name="clean" description="Delete all generated files, excluding the JAR">
+        <delete dir="${build.dir}" />
+    </target>
+    
+    <target name="clean-all" description="Delete all generated filesm, including the JAR" depends="clean">
+        <delete file="${ant.project.name}.jar" />
+    </target>
+
+    <target name="compile" description="Compile HelloTask">
+        <mkdir dir="${build.dir}" />
+        <javac includeantruntime="false"
+               classpath="${lib.dir}/ant.jar"
+               srcdir="${src.dir}"
+               destdir="${build.dir}"
+        />
+    </target>
+
+    <target name="jar" description="Create JAR" depends="compile">
+        <jar destfile="${ant.project.name}.jar" basedir="${build.dir}" />
+    </target>
+
+</project>

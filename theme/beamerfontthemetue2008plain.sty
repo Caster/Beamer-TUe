@@ -1,0 +1,18 @@
+\mode<presentation>
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tuestyle2008}
+
+\ProcessOptionsBeamer
+
+% Fix font warning: \textbullet is not available in 'zmb', but is in 'cmr'
+\let\oldtextbullet\textbullet
+\renewcommand{\textbullet}{{\fontfamily{cmr}\selectfont\oldtextbullet}}
+
+% Use Computer Modern as the main math font since the TU/e fonts are not
+% so suitable for math.
+\def\mathfamilydefault{cmr}                     % [ws] As if cmr is so good for math with the TU/e fonts. Tss...
+\RequirePackage[euler-digits]{eulervm}              % ... so overwrite it with Euler :D
+
+\mode<all>
