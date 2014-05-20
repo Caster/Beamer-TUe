@@ -5,4 +5,5 @@
 *.pdf
 *.snm
 *.toc
+*.vrb
 latextask/build/

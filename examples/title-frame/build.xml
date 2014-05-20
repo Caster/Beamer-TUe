@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="examples-hello-world" basedir=".." default="build.latex">
+<project name="examples-title-frame" basedir=".." default="build.latex">
 
     <property file="build.properties" />
-    <property name="dirname" value="hello-world" />
+    <property name="dirname" value="title-frame" />
     <property name="texname" value="${dirname}" />
 
     <include file="../build-example.xml" as="build" />

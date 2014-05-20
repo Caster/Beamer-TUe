@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="build-all-examples" basedir="." default="latex">
+
+    <property name="dirnames" value="hello-world,title-frame" />
+
+    <include file="build-example.xml" as="build" />
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <fileset dir="../ant-contrib"/>
+        </classpath>
+    </taskdef>
+
+    <target name="clean" description="Delete all generated files, excluding the PDF, for all examples">
+        <for list="${dirnames}" param="dirname" keepgoing="true">
+            <sequential>
+                <antcall target="build.clean" inheritAll="false">
+                    <param name="dirname" value="@{dirname}" />
+                    <param name="texname" value="@{dirname}" />
+                </antcall>
+            </sequential>
+        </for>
+    </target>
+
+    <target name="clean-all" description="Delete all generated files, including the PDF, for all examples">
+        <for list="${dirnames}" param="dirname" keepgoing="true">
+            <sequential>
+                <antcall target="build.clean-all" inheritAll="false">
+                    <param name="dirname" value="@{dirname}" />
+                    <param name="texname" value="@{dirname}" />
+                </antcall>
+            </sequential>
+        </for>
+    </target>
+
+    <target name="latex" description="Run pdflatex on all examples">
+        <for list="${dirnames}" param="dirname" keepgoing="true">
+            <sequential>
+                <echo message="Running pdflatex on all examples..." />
+                <antcall target="build.latex" inheritAll="false">
+                    <param file="build.properties" />
+                    <param name="dirname" value="@{dirname}" />
+                    <param name="texname" value="@{dirname}" />
+                </antcall>
+            </sequential>
+        </for>
+    </target>
+
+</project>
