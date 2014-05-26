@@ -264,7 +264,14 @@
         \pgftext[at=\pgfpoint{\the\paperwidth-0.76cm}{\the\paperheight-2.39cm},left,base]{\thepage}%
         \fi
         % TU/e logo
-        \pgftext[at=\pgfpoint{\the\paperwidth-6.45cm}{\the\paperheight-7.87cm},left,top]{%
+        \newlength{\tuelogoxoffset}
+        \ifdim\beamer@paperheight=9.00cm%
+            \setlength{\tuelogoxoffset}{\the\paperwidth-6.05cm}
+        \else
+            \setlength{\tuelogoxoffset}{\the\paperwidth-6.45cm}
+        \fi
+            
+        \pgftext[at=\pgfpoint{\tuelogoxoffset}{\the\paperheight-7.87cm},left,top]{%
           \TUElogo
         }
 
