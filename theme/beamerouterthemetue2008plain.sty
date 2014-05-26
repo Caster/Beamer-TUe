@@ -39,8 +39,8 @@
 
 \newcommand{\drawbackground}[1][full]{%
     \begin{pgfpicture}{0cm}{0cm}{\the\paperwidth}{\the\paperheight}
-                                % Do some clipping first
-                                % Very annoying otherwise with psnup
+        % Do some clipping first
+        % Very annoying otherwise with psnup
         \fontsize{12}{12}\selectfont
 
         \ifthenelse{\equal{\dept}{ele}}{\renewcommand{\dept}{/e}}{}
@@ -187,30 +187,30 @@
 
         % Background image
         \ifthenelse{\equal{\titlebgimage}{}}{%
-        \pgfsetcolor{themecolor}
-        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-        \pgfusepath{fill}
-        \pgfsetcolor{tuedarkblue}
-        % surface left of main image
-        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth-3.21cm}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-        \pgfusepath{fill}
+            \pgfsetcolor{themecolor}
+            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
+            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+            \pgfusepath{fill}
+            \pgfsetcolor{tuedarkblue}
+            % surface left of main image
+            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth-3.21cm}{\the\paperheight-1.98cm}}
+            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+            \pgfusepath{fill}
         }{
-        \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm},right,base]{\includegraphics[height=5.57cm]{\titlebgimage}}%
-        \pgfsetcolor{themecolor}
-        \pgfsetfillopacity{\titlebgimagetransparency}
-        % surface left of main image
-        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth-3.2cm}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-        \pgfusepath{fill}
-        \pgfsetfillopacity{1}
+            \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm},right,base]{\includegraphics[height=5.57cm]{\titlebgimage}}%
+            \pgfsetcolor{themecolor}
+            \pgfsetfillopacity{\titlebgimagetransparency}
+            % surface left of main image
+            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
+            \pgfpathlineto{\pgfpoint{\the\paperwidth-3.2cm}{\the\paperheight-1.98cm}}
+            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+            \pgfusepath{fill}
+            \pgfsetfillopacity{1}
         }
 
 
@@ -218,28 +218,28 @@
         % diagonal line
         \pgfsetcolor{tuered}
         \ifdim\beamer@paperheight=9.00cm%
-	  \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.24cm}{0cm}}
-	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
-	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.63cm}{\the\paperheight}}
-	  \pgfpathlineto{\pgfpoint{\the\paperwidth-5.22cm}{0cm}}
+          \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.24cm}{0cm}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.63cm}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-5.22cm}{0cm}}
         \else
-	  \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.42cm}{0cm}}
-	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.65cm}{\the\paperheight}}
-	  \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
-	  \pgfpathlineto{\pgfpoint{\the\paperwidth-5.4cm}{0cm}}
+          \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.42cm}{0cm}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.65cm}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
+          \pgfpathlineto{\pgfpoint{\the\paperwidth-5.4cm}{0cm}}
         \fi
         \pgfusepath{fill}
         % lower horizontal line
         \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.55cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-7.55cm}}
         \pgfusepath{fill}
         % upper horizontal line
         \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.99cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.99cm}}
         \pgfusepath{fill}
 
         % TU/e slogan: Where innovation starts
