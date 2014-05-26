@@ -30,6 +30,9 @@
 \newcommand{\titlebgimage}{}
 \DeclareOptionBeamer{titlebgimage}{\renewcommand{\titlebgimage}{#1}}
 
+\newcommand{\titlebgimagetransparency}{0.65}
+\DeclareOptionBeamer{titlebgimagetransparency}{\renewcommand{\titlebgimagetransparency}{#1}}
+
 \ProcessOptionsBeamer
 
 \mode<presentation>
@@ -200,12 +203,14 @@
         }{
         \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm},right,base]{\includegraphics[height=5.57cm]{\titlebgimage}}%
         \pgfsetcolor{themecolor}
+        \pgfsetfillopacity{\titlebgimagetransparency}
         % surface left of main image
         \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
         \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
         \pgfpathlineto{\pgfpoint{\the\paperwidth-3.2cm}{\the\paperheight-1.98cm}}
         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
         \pgfusepath{fill}
+        \pgfsetfillopacity{1}
         }
 
 
