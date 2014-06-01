@@ -249,7 +249,13 @@
 
         % Title
         \pgftext[at=\pgfpoint{1cm}{\the\paperheight-3.15cm},left,top]{\color{white}\normalfont\fontsize{18}{18}\selectfont\bfseries%
-        \begin{minipage}[b]{8.19cm}
+        \newlength{\titlewidth}
+        \ifdim\beamer@paperheight=9.00cm%
+          \setlength{\titlewidth}{10.19cm}
+        \else
+          \setlength{\titlewidth}{8.19cm}
+        \fi
+        \begin{minipage}[b]{\titlewidth}
         \raggedright
         \inserttitle
 
@@ -304,7 +310,7 @@
 \setbeamerfont{frametitle}{series=\bfseries}
 \setbeamertemplate{frametitle}
 {
-\setlength{\frametitlewidth}{10.5cm}
+\setlength{\frametitlewidth}{11.5cm}
 \setlength{\frametitleheight}{1.5cm}
 \ifbeamer@official
 \setlength{\frametitleheight}{2.2cm}
@@ -346,6 +352,29 @@
     \setbeamercolor{section in toc}{use=alerted text,fg=alerted text.fg}
     \setbeamercolor{section in toc shaded}{fg=black}
     \setbeamertemplate{section in toc shaded}[default][100]
+    \setbeamercolor{subsection in toc}{fg=black}
+    \setbeamercolor{subsection in toc shaded}{fg=black}
+    \setbeamertemplate{subsection in toc shaded}[default][100]
+    \begin{frame}{}
+      \vspace*{-3em}
+      \tableofcontents[currentsection]
+    \end{frame}
+    \egroup
+    \addtocounter{framenumber}{-1}
+  }
+  
+  \AtBeginSubsection[] {
+    \bgroup
+    \usebackgroundtemplate{\drawbackground[plain]}
+    \hypersetup{
+      hidelinks
+    }
+    \setbeamercolor{section in toc}{fg=black}
+    \setbeamercolor{section in toc shaded}{fg=black}
+    \setbeamertemplate{section in toc shaded}[default][100]
+    \setbeamercolor{subsection in toc}{use=alerted text,fg=alerted text.fg}
+    \setbeamercolor{subsection in toc shaded}{fg=black}
+    \setbeamertemplate{subsection in toc shaded}[default][100]
     \begin{frame}{}
       \vspace*{-3em}
       \tableofcontents[currentsection]
