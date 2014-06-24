@@ -336,7 +336,7 @@
 \mode<all>
 
 \ifbeamer@tocslides
-  \AtBeginSection[] {
+  \newcommand{\tue@atbeginsection}{
     \bgroup
     \usebackgroundtemplate{\drawbackground[plain]}
     \hypersetup{
@@ -356,7 +356,7 @@
     \addtocounter{framenumber}{-1}
   }
   
-  \AtBeginSubsection[] {
+  \newcommand{\tue@atbeginsubsection}{
     \bgroup
     \usebackgroundtemplate{\drawbackground[plain]}
     \hypersetup{
@@ -375,4 +375,11 @@
     \egroup
     \addtocounter{framenumber}{-1}
   }
+  
+  \AtBeginSection[] {\tue@atbeginsection}
+  \AtBeginSubsection[] {\tue@atbeginsubsection}
+  \newcommand{\disabletocslidessection}{\AtBeginSection[]{}}
+  \newcommand{\enabletocslidessection}{\AtBeginSection[]{\tue@atbeginsection}}
+  \newcommand{\disabletocslidessubsection}{\AtBeginSubsection[]{}}
+  \newcommand{\enabletocslidessubsection}{\AtBeginSubsection[]{\tue@atbeginsubsection}}
 \fi
