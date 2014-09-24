@@ -17,10 +17,10 @@ After cloning the repository or downloading a tarball from GitHub, you need to g
 \mode<presentation>
 ```
 
-It is probably best to put these lines right after your `\usepackage` declarations, which in turn should come after the
+There are many more options and of course, you can play with the values. The above values are by no means recommended or default, just an example. Also refer to [Options for the theme](#options). It is probably best to put these lines right after your `\usepackage` declarations, which in turn should come after the
 
 ```
-\documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 of 169
+\documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 or 169
 ```
 
 line at the top of your TeX source file.
