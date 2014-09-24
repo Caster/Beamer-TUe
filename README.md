@@ -25,6 +25,8 @@ There are many more options and of course, you can play with the values. The abo
 
 line at the top of your TeX source file.
 
+At the moment, the theme only works correctly when using PDFLaTeX. With XeLaTeX, there are strange problems: for example the slide number becomes black instead of the correct theme colour.
+
 <a name="options"></a>Theme options
 -----------------------------------
 The theme supports the following options, which can be passed to it in the usual way: in the `\usetheme` line (refer to [Usage instructions](#usage)). All options are key/value pairs. Most options were present in the original TU/e theme, but they are documented here too for completeness.
