@@ -1,0 +1,32 @@
+\documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 of 169
+
+% colors (theme=...): red (default), blue, cyan, orange, green
+% official=false: nice, but non-official style
+% official=true:  the style they also have in PowerPoint, with the blue rectangle at the bottom
+% NOTE: using official=true will cause the frame numbers to be incorrect!
+\usetheme[department=winuk,official=false,theme=cyan,innovation=false]{tue2008}
+\mode<presentation>
+
+% title and author
+\title{Some interesting title}
+\author{Thom Castermans}
+
+% document
+\begin{document}
+
+\begin{titleframe}
+\end{titleframe}
+\addtocounter{framenumber}{-1}
+
+\begin{frame}{First slide}
+  \begin{itemize}
+    \item This is a simple presentation using the TU/e Beamer theme
+    \item It should look like the \textit{hello-world} example
+    \item The first slide should be a title frame however
+    \item Alsno note that this is the first frame, not the second, thanks to
+
+        \texttt{\textbackslash{}addtocounter\{framenumber\}\{-1\}}
+  \end{itemize}
+\end{frame}
+
+\end{document}
