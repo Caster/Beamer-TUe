@@ -48,7 +48,7 @@ The theme supports the following options, which can be passed to it in the usual
 
 <a name="font-installation"></a>TU/e font installation
 ------------------------------------------------------
-You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux and Windows, you can do so as follows below. On Mac, the procedure is probably similar, but as I (the developer) cannot test on that platform, documentation is lacking. Please open an issue (preferably with a pull request) with extra information if you are able to test on some other platform, or find an error in the documentation here.
+You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux, Mac and Windows, you can do so as follows below. If you encounter a problem, do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). In case there is a problem with Beamer-TUe, you are welcome to open a [pull request](https://github.com/Caster/Beamer-TUe/pulls).
 
 1. Download the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the repository. You can skip this step if you cloned the repository.
 2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`. If this `texmf` folder does not exist yet, you can create it. The name and location of this folder are important, because your LaTeX distribution will look in this directory for fonts and packages.
