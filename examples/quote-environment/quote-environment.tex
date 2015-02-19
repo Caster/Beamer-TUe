@@ -1,0 +1,31 @@
+\documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 of 169
+
+% colors (theme=...): red (default), blue, cyan, orange, green
+% official=false: nice, but non-official style
+% official=true:  the style they also have in PowerPoint, with the blue rectangle at the bottom
+% NOTE: using official=true will cause the frame numbers to be incorrect!
+\usetheme[department=winuk,official=false,theme=cyan,innovation=false]{tue2008}
+\mode<presentation>
+
+% the default is 60, make the size of the quotes slightly smaller
+\renewcommand{\quotesize}{40}
+
+% title and author
+\title{Quote environment}
+\author{Thom Castermans}
+
+% document
+\begin{document}
+
+\begin{frame}{Hello world! This is a quote}
+  \begin{itemize}
+    \item This is a simple presentation using the TU/e Beamer theme
+    \item Edsger Dijkstra was once quoted as saying
+
+      \begin{quote}{Edsger Dijkstra (possibly)}[famous Dutch computer scientist]
+        Two or more? Use a for.
+      \end{quote}
+  \end{itemize}
+\end{frame}
+
+\end{document}

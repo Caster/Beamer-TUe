@@ -259,17 +259,17 @@
   {\tikz[remember picture,overlay,xshift=2ex,yshift={#1}]
    \node (CQ) {\fontsize{\quotesize}{\quotesize}\selectfont\textcolor{themecolor}{''}};}
 % http://tex.stackexchange.com/a/162789/23145
-\RenewDocumentEnvironment{quote}{G{}O{}}%
+\RenewDocumentEnvironment{quote}{O{0.9\textwidth}O{.4em}G{}O{}}%
   {%
-    \oldquote\openquote
+    \vspace{#2}\begin{minipage}{#1}\oldquote\openquote
   }%
   {%
     \hfill\closequote{-0.7ex}%
-    \item[]\mbox{}\hfill\alert{\footnotesize\textsc{#1}}
-    \if\relax\detokenize{#2}\relax\relax\else%
-      \footnotesize -- #2
+    \item[]\mbox{}\hfill\alert{\footnotesize\textsc{#3}}
+    \if\relax\detokenize{#4}\relax\relax\else%
+      \footnotesize -- #4
     \fi%
-    \endoldquote
+    \endoldquote\end{minipage}
   }
 
 \mode<presentation>
