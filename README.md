@@ -4,10 +4,11 @@ An extension of the TU/e theme for the LaTeX Beamer class.
 
 Table of contents
 -----------------
-* [Usage instructions](#usage-instructions)
-* [Options for the theme](#theme-options)
-* [TU/e font installation](#tue-font-installation)
-  * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-miktex)
+  * [Usage instructions](#usage-instructions)
+  * [Options for the theme](#theme-options)
+  * [Quoting](#quoting)
+  * [TU/e font installation](#tue-font-installation)
+    * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-miktex)
 
 Usage instructions
 ------------------
@@ -59,6 +60,37 @@ too for completeness.
 | realpagenumbers          | false          | true, false                                                                                                    | If apart from the slide number, the page number should be put on every slide.                                                                                                  |
 | tocslides                | false          | true, false                                                                                                    | If at the start of every `\section`, a slide should be inserted with a table of contents in which the section is highlighted.                                                  |
 | slidesperpage            | 1              | Any positive integer.                                                                                          | The number of slides to put per page. When handout is used, this value is set to 2 and cannot be overridden.                                                                   |
+
+Quoting
+-------
+The Beamer TU/e theme comes with a custom quote environment. That is, the 
+default quote environment is styled in a more TU/e-like way. If you do not like 
+the new environment, you can use the `\begin{oldquote}` and `\end{oldquote}` 
+commands to get the old quote environment without additional styling.
+
+The complete documentation of the new quote environment is as follows.
+
+    \begin{quote}[quote width][top margin]{name of cited person}[extra information about cited person]
+        ...
+    \end{quote}
+
+All arguments are optional, despite the fact that the name of the cited person 
+should be given using `{...}` instead of the usual `[...]`. This is done so that 
+the spacing parameters need not be specified to be able to specify the cited 
+person and information about them. Default values are as follows:
+
+| Option key           | Default value
+| -------------------- | ---------------
+| quote width          | `0.9\textwidth`
+| top margin           | `.4em`
+| name of cited person | (empty string)
+| extra information    | (empty string)
+
+As is shown in the `quote-environment` example in this repository, you can 
+change the size of the quotation marks that are set around the quote. This can 
+be done by redefining the `\quotesize` command. The default value is 60, but you 
+can change it to 40 by putting `\renewcommand{\quotesize}{40}` anywhere before 
+your quote.
 
 TU/e font installation
 ----------------------
