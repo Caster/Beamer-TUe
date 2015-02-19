@@ -4,13 +4,13 @@ An extension of the TU/e theme for the LaTeX Beamer class.
 
 Table of contents
 -----------------
-* [Usage instructions](#usage)
-* [Options for the theme](#options)
-* [TU/e font installation](#font-installation)
-  * [Font installation on Windows (MiKTeX)](#font-installation-windows)
+* [Usage instructions](#usage-instructions)
+* [Options for the theme](#theme-options)
+* [TU/e font installation](#tue-font-installation)
+  * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-miktex)
 
-<a name="usage"></a>Usage instructions
---------------------------------------
+Usage instructions
+------------------
 After cloning the repository or downloading a tarball from GitHub, you need to grab the contents of the `theme` directory and put that in the same directory as where your main TeX source file is located. After that, you should be able to use the TU/e Beamer theme in your Beamer presentation using the following lines:
 
 ```
@@ -18,7 +18,7 @@ After cloning the repository or downloading a tarball from GitHub, you need to g
 \mode<presentation>
 ```
 
-There are many more options and of course, you can play with the values. The above values are by no means recommended or default, just an example. Also refer to [Options for the theme](#options). It is probably best to put these lines right after your `\usepackage` declarations, which in turn should come after the
+There are many more options and of course, you can play with the values. The above values are by no means recommended or default, just an example. Also refer to [Options for the theme](#theme-options). It is probably best to put these lines right after your `\usepackage` declarations, which in turn should come after the
 
 ```
 \documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 or 169
@@ -28,9 +28,9 @@ line at the top of your TeX source file.
 
 At the moment, the theme only works correctly when using PDFLaTeX. With XeLaTeX, there are strange problems: for example the slide number becomes black instead of the correct theme colour.
 
-<a name="options"></a>Theme options
------------------------------------
-The theme supports the following options, which can be passed to it in the usual way: in the `\usetheme` line (refer to [Usage instructions](#usage)). All options are key/value pairs. Most options were present in the original TU/e theme, but they are documented here too for completeness.
+Theme options
+-------------
+The theme supports the following options, which can be passed to it in the usual way: in the `\usetheme` line (refer to [Usage instructions](#usage-instructions)). All options are key/value pairs. Most options were present in the original TU/e theme, but they are documented here too for completeness.
 
 | Option key               | Default value  | Possible values                                                                                                | Option description                                                                                                                                                             |
 | ------------------------ | -------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -47,9 +47,9 @@ The theme supports the following options, which can be passed to it in the usual
 | tocslides                | false          | true, false                                                                                                    | If at the start of every `\section`, a slide should be inserted with a table of contents in which the section is highlighted.                                                  |
 | slidesperpage            | 1              | Any positive integer.                                                                                          | The number of slides to put per page. When handout is used, this value is set to 2 and cannot be overridden.                                                                   |
 
-<a name="font-installation"></a>TU/e font installation
-------------------------------------------------------
-You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux and Mac, you can do so as follows below. On Windows, refer to [the Windows subsection](#font-installation-windows). If you encounter a problem, do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). In case there is a problem with Beamer-TUe, you are welcome to open a [pull request](https://github.com/Caster/Beamer-TUe/pulls).
+TU/e font installation
+----------------------
+You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux and Mac, you can do so as follows below. On Windows, refer to [the Windows subsection](#font-installation-on-windows-miktex). If you encounter a problem, do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). In case there is a problem with Beamer-TUe, you are welcome to open a [pull request](https://github.com/Caster/Beamer-TUe/pulls).
 
 1. Download the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the repository. You can skip this step if you cloned the repository.
 2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`. If this `texmf` folder does not exist yet, you can create it. The name and location of this folder are important, because your LaTeX distribution will look in this directory for fonts and packages.
@@ -62,7 +62,7 @@ You may notice that the font is incorrect (and there may be warnings coming from
 
 Congratulations, you should now be able to use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however.
 
-###<a name="font-installation-windows"></a>Font installation on Windows (MiKTeX)
+###Font installation on Windows (MiKTeX)
 Installing the TU/e font on Windows in such a way that LaTeX can use it is slightly more elaborate than on Linux and Mac, but it should be easy to follow the steps in this section to make it work. The steps are taken from [this answer at TeX.SE](http://tex.stackexchange.com/a/95456/23145), but has been changed so that it specifically targets the TU/e font installation, instead of Frutiger.
 
 ####Create a local texmf tree
