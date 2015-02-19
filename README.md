@@ -11,14 +11,21 @@ Table of contents
 
 Usage instructions
 ------------------
-After cloning the repository or downloading a tarball from GitHub, you need to grab the contents of the `theme` directory and put that in the same directory as where your main TeX source file is located. After that, you should be able to use the TU/e Beamer theme in your Beamer presentation using the following lines:
+After cloning the repository or downloading a tarball from GitHub, you need to 
+grab the contents of the `theme` directory and put that in the same directory as 
+where your main TeX source file is located. After that, you should be able to 
+use the TU/e Beamer theme in your Beamer presentation using the following lines:
 
 ```
 \usetheme[department=winuk,official=false,theme=cyan,innovation=false]{tue2008}
 \mode<presentation>
 ```
 
-There are many more options and of course, you can play with the values. The above values are by no means recommended or default, just an example. Also refer to [Options for the theme](#theme-options). It is probably best to put these lines right after your `\usepackage` declarations, which in turn should come after the
+There are many more options and of course, you can play with the values. The 
+above values are by no means recommended or default, just an example. Also refer 
+to [Options for the theme](#theme-options). It is probably best to put these 
+lines right after your `\usepackage` declarations, which in turn should come 
+after the
 
 ```
 \documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 or 169
@@ -26,11 +33,17 @@ There are many more options and of course, you can play with the values. The abo
 
 line at the top of your TeX source file.
 
-At the moment, the theme only works correctly when using PDFLaTeX. With XeLaTeX, there are strange problems: for example the slide number becomes black instead of the correct theme colour.
+At the moment, the theme only works correctly when using PDFLaTeX. With XeLaTeX, 
+there are strange problems: for example the slide number becomes black instead 
+of the correct theme colour.
 
 Theme options
 -------------
-The theme supports the following options, which can be passed to it in the usual way: in the `\usetheme` line (refer to [Usage instructions](#usage-instructions)). All options are key/value pairs. Most options were present in the original TU/e theme, but they are documented here too for completeness.
+The theme supports the following options, which can be passed to it in the usual 
+way: in the `\usetheme` line (refer to [Usage 
+instructions](#usage-instructions)). All options are key/value pairs. Most 
+options were present in the original TU/e theme, but they are documented here 
+too for completeness.
 
 | Option key               | Default value  | Possible values                                                                                                | Option description                                                                                                                                                             |
 | ------------------------ | -------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -49,34 +62,61 @@ The theme supports the following options, which can be passed to it in the usual
 
 TU/e font installation
 ----------------------
-You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux and Mac, you can do so as follows below. On Windows, refer to [the Windows subsection](#font-installation-on-windows-miktex). If you encounter a problem, do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). In case there is a problem with Beamer-TUe, you are welcome to open a [pull request](https://github.com/Caster/Beamer-TUe/pulls).
+You may notice that the font is incorrect (and there may be warnings coming from 
+LaTeX telling you so). In that case, you probably need to install the TU/e font 
+in such a way that LaTeX can use it. On Linux and Mac, you can do so as follows 
+below. On Windows, refer to [the Windows 
+subsection](#font-installation-on-windows-miktex). If you encounter a problem, 
+do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). 
+In case there is a problem with Beamer-TUe, you are welcome to open a [pull 
+request](https://github.com/Caster/Beamer-TUe/pulls).
 
-1. Download the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the repository. You can skip this step if you cloned the repository.
-2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`. If this `texmf` folder does not exist yet, you can create it. The name and location of this folder are important, because your LaTeX distribution will look in this directory for fonts and packages.
-3. Next, open a command line and `cd` to `~/texmf/dvips/config/`. Run the following commands (if you do not have `sudo` installed, run them as root, so `su` before you start them and without `sudo`):
+  1. Download the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder 
+in the repository. You can skip this step if you cloned the repository.
+  2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`. 
+If this `texmf` folder does not exist yet, you can create it. The name and 
+location of this folder are important, because your LaTeX distribution will look 
+in this directory for fonts and packages.
+  3. Next, open a command line and `cd` to `~/texmf/dvips/config/`. Run the 
+following commands (if you do not have `sudo` installed, run them as root, so 
+`su` before you start them and without `sudo`):
 
 <pre>
 <b>$</b> sudo updmap-sys --enable Map=tue.map
 <b>$</b> sudo mktexlsr
 </pre>
 
-Congratulations, you should now be able to use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however.
+Congratulations, you should now be able to use the `zmb` font family in LaTeX 
+and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however.
 
 ###Font installation on Windows (MiKTeX)
-Installing the TU/e font on Windows in such a way that LaTeX can use it is slightly more elaborate than on Linux and Mac, but it should be easy to follow the steps in this section to make it work. The steps are taken from [this answer at TeX.SE](http://tex.stackexchange.com/a/95456/23145), but has been changed so that it specifically targets the TU/e font installation, instead of Frutiger.
+Installing the TU/e font on Windows in such a way that LaTeX can use it is 
+slightly more elaborate than on Linux and Mac, but it should be easy to follow 
+the steps in this section to make it work. The steps are taken from [this answer 
+at TeX.SE](http://tex.stackexchange.com/a/95456/23145), but has been changed so 
+that it specifically targets the TU/e font installation, instead of Frutiger.
 
 ####Create a local texmf tree
-If no local texmf tree exists, you can create the folder `C:/localtexmf`. The subtrees you need depend on what you want to install into this directory, but in your case it should be sufficient to include the following:
+If no local texmf tree exists, you can create the folder `C:/localtexmf`. The 
+subtrees you need depend on what you want to install into this directory, but in 
+your case it should be sufficient to include the following:
 
     C:/localtexmf/doc/latex
                  /tex/latex
 
-Then go to MikTeX's *Settings (Admin)* in the Start Menu, click on the *Roots* tab and add `C:/localtexmf`. Next click on the *General* tab and click on *Refresh FNDB*.
-  
-Complete instructions for the creation of a local texmf tree in MiKTeX can be found [here](http://tex.stackexchange.com/a/69484/14497). More information on TDS compliance can be found [here](http://tug.org/tds/tds.html).
+Then go to MikTeX's *Settings (Admin)* in the Start Menu, click on the *Roots* 
+tab and add `C:/localtexmf`. Next click on the *General* tab and click on 
+*Refresh FNDB*.
+
+Complete instructions for the creation of a local texmf tree in MiKTeX can be 
+found [here](http://tex.stackexchange.com/a/69484/14497). More information on 
+TDS compliance can be found [here](http://tug.org/tds/tds.html).
 
 ####Install fonts
-Download [`latex_huisstijl.zip`](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip) from this repository and unpack it in your `C:/localtexmf` folder (or copy its contents there). This means that for example the file
+Download 
+[`latex_huisstijl.zip`](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip)
+from this repository and unpack it in your `C:/localtexmf` folder (or copy its 
+contents there). This means that for example the file
 
     dvips/config/tue.map
 
@@ -99,4 +139,9 @@ and save. Afterwards, run
      initexmf -u
      initexmf --mkmaps
 
-Finally, refresh the FNDB. Try running `kpsewhich tue.map` on the Windows command prompt. It should return the location of the map file; if it doesn't, somehow it is not visible to TeX. Otherwise, you are done and are now able to use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however. All examples in this repository use the `zmb` font family and hence should look better after you have done all this.
+Finally, refresh the FNDB. Try running `kpsewhich tue.map` on the Windows 
+command prompt. It should return the location of the map file; if it doesn't, 
+somehow it is not visible to TeX. Otherwise, you are done and are now able to 
+use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to 
+`\usepackage[T1]{fontenc}` however. All examples in this repository use the 
+`zmb` font family and hence should look better after you have done all this.
