@@ -7,6 +7,7 @@ Table of contents
 * [Usage instructions](#usage)
 * [Options for the theme](#options)
 * [TU/e font installation](#font-installation)
+  * [Font installation on Windows (MiKTeX)](#font-installation-windows)
 
 <a name="usage"></a>Usage instructions
 --------------------------------------
@@ -48,7 +49,7 @@ The theme supports the following options, which can be passed to it in the usual
 
 <a name="font-installation"></a>TU/e font installation
 ------------------------------------------------------
-You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux, Mac and Windows, you can do so as follows below. If you encounter a problem, do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). In case there is a problem with Beamer-TUe, you are welcome to open a [pull request](https://github.com/Caster/Beamer-TUe/pulls).
+You may notice that the font is incorrect (and there may be warnings coming from LaTeX telling you so). In that case, you probably need to install the TU/e font in such a way that LaTeX can use it. On Linux and Mac, you can do so as follows below. On Windows, refer to [the Windows subsection](#font-installation-windows). If you encounter a problem, do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues). In case there is a problem with Beamer-TUe, you are welcome to open a [pull request](https://github.com/Caster/Beamer-TUe/pulls).
 
 1. Download the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the repository. You can skip this step if you cloned the repository.
 2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`. If this `texmf` folder does not exist yet, you can create it. The name and location of this folder are important, because your LaTeX distribution will look in this directory for fonts and packages.
@@ -60,3 +61,42 @@ You may notice that the font is incorrect (and there may be warnings coming from
 </pre>
 
 Congratulations, you should now be able to use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however.
+
+###<a name="font-installation-windows"></a>Font installation on Windows (MiKTeX)
+Installing the TU/e font on Windows in such a way that LaTeX can use it is slightly more elaborate than on Linux and Mac, but it should be easy to follow the steps in this section to make it work. The steps are taken from [this answer at TeX.SE](http://tex.stackexchange.com/a/95456/23145), but has been changed so that it specifically targets the TU/e font installation, instead of Frutiger.
+
+####Create a local texmf tree
+If no local texmf tree exists, you can create the folder `C:/localtexmf`. The subtrees you need depend on what you want to install into this directory, but in your case it should be sufficient to include the following:
+
+    C:/localtexmf/doc/latex
+                 /tex/latex
+
+Then go to MikTeX's *Settings (Admin)* in the Start Menu, click on the *Roots* tab and add `C:/localtexmf`. Next click on the *General* tab and click on *Refresh FNDB*.
+  
+Complete instructions for the creation of a local texmf tree in MiKTeX can be found [here](http://tex.stackexchange.com/a/69484/14497). More information on TDS compliance can be found [here](http://tug.org/tds/tds.html).
+
+####Install fonts
+Download [`latex_huisstijl.zip`](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip) from this repository and unpack it in your `C:/localtexmf` folder (or copy its contents there). This means that for example the file
+
+    dvips/config/tue.map
+
+would go in `C:/localtexmf/dvips/config`, the folder
+
+    fonts/tfm/tue/huisstyl
+
+would go in `C:/localtexmf/fonts/tfm/tue/huisstyl`, et cetera.
+
+Next, on the Windows command prompt, type
+
+    initexmf --admin --edit-config-file updmap
+
+then add the line
+
+    Map tue.map
+
+and save. Afterwards, run
+
+     initexmf -u
+     initexmf --mkmaps
+
+Finally, refresh the FNDB. Try running `kpsewhich tue.map` on the Windows command prompt. It should return the location of the map file; if it doesn't, somehow it is not visible to TeX. Otherwise, you are done and are now able to use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however. All examples in this repository use the `zmb` font family and hence should look better after you have done all this.
