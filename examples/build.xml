@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="build-all-examples" basedir="." default="latex">
 
-    <property name="dirnames" value="hello-world,title-frame,title-frame-bg-image,title-frame-ignore-number" />
+    <property name="dirnames" value="hello-world,quote-environment,title-frame,title-frame-bg-image,title-frame-ignore-number" />
 
     <include file="build-example.xml" as="build" />
 
@@ -12,6 +12,7 @@
     </taskdef>
 
     <target name="clean" description="Delete all generated files, excluding the PDF, for all examples">
+        <echo message="Cleaning up LaTeX helper files for all examples..." />
         <for list="${dirnames}" param="dirname" keepgoing="true">
             <sequential>
                 <antcall target="build.clean" inheritAll="false">
@@ -23,6 +24,7 @@
     </target>
 
     <target name="clean-all" description="Delete all generated files, including the PDF, for all examples">
+        <echo message="Cleaning up LaTeX helper files and PDF files for all examples..." />
         <for list="${dirnames}" param="dirname" keepgoing="true">
             <sequential>
                 <antcall target="build.clean-all" inheritAll="false">
@@ -34,9 +36,9 @@
     </target>
 
     <target name="latex" description="Run pdflatex on all examples">
+        <echo message="Running pdflatex on all examples..." />
         <for list="${dirnames}" param="dirname" keepgoing="true">
             <sequential>
-                <echo message="Running pdflatex on all examples..." />
                 <antcall target="build.latex" inheritAll="false">
                     <param file="build.properties" />
                     <param name="dirname" value="@{dirname}" />
