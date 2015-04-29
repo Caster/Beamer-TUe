@@ -248,8 +248,8 @@
   }
 
 % improve quote environment
-\let\oldquote\quote
-\let\endoldquote\endquote
+\let\oldquoteenv\quote
+\let\endoldquoteenv\endquote
 % http://tex.stackexchange.com/a/16981/23145
 \newcommand*\quotesize{60}
 \newcommand*{\openquote}
@@ -261,7 +261,7 @@
 % http://tex.stackexchange.com/a/162789/23145
 \RenewDocumentEnvironment{quote}{O{0.9\textwidth}O{.4em}G{}O{}}%
   {%
-    \vspace{#2}\begin{minipage}{#1}\oldquote\openquote
+    \vspace{#2}\begin{minipage}{#1}\oldquoteenv\openquote
   }%
   {%
     \hfill\closequote{-0.7ex}%
@@ -271,7 +271,7 @@
     \fi%
     \endoldquote\end{minipage}
   }
-\NewDocumentEnvironment{oldquote}{}{\oldquote}{\endoldquote}
+\NewDocumentEnvironment{oldquote}{}{\oldquoteenv}{\endoldquoteenv}
 
 \mode<presentation>
 
