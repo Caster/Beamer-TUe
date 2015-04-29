@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="examples-title-frame-innovation" basedir=".." default="build.latex">
+
+    <property file="build.properties" />
+    <property name="dirname" value="title-frame-innovation" />
+    <property name="texname" value="${dirname}" />
+
+    <include file="../build-example.xml" as="build" />
+
+    <target name="clean" description="Delete all generated files, excluding the PDF" depends="build.clean">
+    </target>
+
+    <target name="clean-all" description="Delete all generated files, including the PDF" depends="build.clean-all">
+    </target>
+
+    <target name="latex" description="Run pdflatex" depends="build.latex">
+    </target>
+
+</project>

@@ -244,7 +244,11 @@
 
         % TU/e slogan: Where innovation starts
         \ifbeamer@innovation
-          \pgftext[at=\pgfpoint{\the\paperwidth-2.99cm}{0.39cm},right,top]{\color{tuedarkblue}\normalfont\normalsize\tiny\selectfont\bfseries Where innovation starts}%
+          \ifdim\beamer@paperheight=9.00cm%
+            \pgftext[at=\pgfpoint{\the\paperwidth-6.5cm}{0.82cm},right,top]{\color{tuedarkblue}\normalfont\normalsize\tiny\selectfont\bfseries Where innovation starts}%
+          \else%
+            \pgftext[at=\pgfpoint{\the\paperwidth-2.2cm}{0.441cm},right,base]{\color{tuedarkblue}\normalfont\normalsize\tiny\selectfont\bfseries Where innovation starts}%
+          \fi%
         \fi
 
         % Title
@@ -274,8 +278,11 @@
           \TUElogo
         }
 
-        \pgftext[at=\pgfpoint{0.441cm}{0.441cm},left,base]{%
-          \color{tuered}\tiny\@date}%
+        \ifdim\beamer@paperheight=9.00cm%
+          \pgftext[at=\pgfpoint{0.441cm}{0.82cm},left,top]{\color{tuered}\tiny\@date}%
+        \else%
+          \pgftext[at=\pgfpoint{0.441cm}{0.441cm},left,base]{\color{tuered}\tiny\@date}%
+        \fi%
         \pgfsetcolor{black}
         \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight}}
         \pgfusepath{stroke}
