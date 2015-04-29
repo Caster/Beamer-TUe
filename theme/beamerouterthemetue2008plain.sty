@@ -33,6 +33,9 @@
 \newcommand{\titlebgimagetransparency}{0.65}
 \DeclareOptionBeamer{titlebgimagetransparency}{\renewcommand{\titlebgimagetransparency}{#1}}
 
+\newcommand{\tocplain}{true}
+\DeclareOptionBeamer{tocplain}{\renewcommand{\tocplain}{#1}}
+
 \ProcessOptionsBeamer
 
 \mode<presentation>
@@ -345,7 +348,7 @@
 \ifbeamer@tocslides
   \newcommand{\tue@atbeginsection}{
     \bgroup
-    \usebackgroundtemplate{\drawbackground[plain]}
+    \ifthenelse{\equal{\tocplain}{true}}{\usebackgroundtemplate{\drawbackground[plain]}}{}
     \hypersetup{
       hidelinks
     }
@@ -360,7 +363,7 @@
       \tableofcontents[currentsection]
     \end{frame}
     \egroup
-    \addtocounter{framenumber}{-1}
+    \ifthenelse{\equal{\tocplain}{true}}{\addtocounter{framenumber}{-1}}
   }
   
   \newcommand{\tue@atbeginsubsection}{

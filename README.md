@@ -60,6 +60,7 @@ too for completeness.
 | realpagenumbers          | false          | true, false                                                                                                    | If apart from the slide number, the page number should be put on every slide.                                                                                                  |
 | tocslides                | false          | true, false                                                                                                    | If at the start of every `\section`, a slide should be inserted with a table of contents in which the section is highlighted.                                                  |
 | slidesperpage            | 1              | Any positive integer.                                                                                          | The number of slides to put per page. When handout is used, this value is set to 2 and cannot be overridden.                                                                   |
+| tocplain            | true              | true, false                                                                                          | If table of content slides are included whether to use the plain layout or the TUE layout (includes the toc-slide in the numbering)                                                                |
 
 Quoting
 -------
