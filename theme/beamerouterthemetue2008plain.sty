@@ -282,9 +282,9 @@
         }
 
         \ifdim\beamer@paperheight=9.00cm%
-          \pgftext[at=\pgfpoint{0.441cm}{0.82cm},left,top]{\color{tuered}\tiny\@date}%
+          \pgftext[at=\pgfpoint{0.441cm}{0.82cm},left,top]{\color{tuered}\tiny\insertdate{}}%
         \else%
-          \pgftext[at=\pgfpoint{0.441cm}{0.441cm},left,base]{\color{tuered}\tiny\@date}%
+          \pgftext[at=\pgfpoint{0.441cm}{0.441cm},left,base]{\color{tuered}\tiny\insertdate{}}%
         \fi%
         \pgfsetcolor{black}
         \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight}}
