@@ -3,15 +3,15 @@
 \RequirePackage{ifthen}
 
 \newif\ifbeamer@official
-\beamer@officialtrue
+\beamer@officialfalse
 \DeclareOptionBeamer{official}[false]{\csname beamer@official#1\endcsname}
 
 \newcommand{\dept}{none}
 \DeclareOptionBeamer{department}{\renewcommand{\dept}{#1}}
 
 \newif\ifbeamer@innovation
-\beamer@innovationtrue
-\DeclareOptionBeamer{innovation}[true]{\csname beamer@innovation#1\endcsname}
+\beamer@innovationfalse
+\DeclareOptionBeamer{innovation}[false]{\csname beamer@innovation#1\endcsname}
 
 \newif\ifbeamer@realpagenumbers
 \beamer@realpagenumbersfalse
