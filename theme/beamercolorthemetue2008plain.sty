@@ -1,14 +1,51 @@
 \mode<presentation>
 
 \RequirePackage{tuestyle2008}
-\definecolor{themecolor}{rgb}{0.839,0.000,0.290}
+\definecolor{themecolor}{HTML}{F73131} % default is PMS Warm Red
 
 \DeclareOptionBeamer{theme}[red]{%
-\ifthenelse{\equal{#1}{red}}{\definecolor{themecolor}{rgb}{0.839,0.000,0.290}}{}
-\ifthenelse{\equal{#1}{cyan}}{\definecolor{themecolor}{rgb}{0.000,0.635,0.871}}{}
-\ifthenelse{\equal{#1}{blue}}{\definecolor{themecolor}{rgb}{0.000,0.400,0.800}}{}
-\ifthenelse{\equal{#1}{green}}{\definecolor{themecolor}{rgb}{0.518,0.824,0.000}}{}
-\ifthenelse{\equal{#1}{orange}}{\definecolor{themecolor}{rgb}{1.000,0.604,0.000}}{}
+% PMS Warm Red
+\ifthenelse{\equal{#1}{red}}{               \definecolor{themecolor}{HTML}{F73131}}{}
+\ifthenelse{\equal{#1}{pms-warm-red}}{      \definecolor{themecolor}{HTML}{F73131}}{}
+% PMS Process Cyan
+\ifthenelse{\equal{#1}{cyan}}{              \definecolor{themecolor}{HTML}{00A2DE}}{}
+\ifthenelse{\equal{#1}{pms-process-cyan}}{  \definecolor{themecolor}{HTML}{00A2DE}}{}
+% PMS 300
+\ifthenelse{\equal{#1}{blue}}{              \definecolor{themecolor}{HTML}{0066CC}}{}
+\ifthenelse{\equal{#1}{pms-300}}{           \definecolor{themecolor}{HTML}{0066CC}}{}
+% PMS 375
+\ifthenelse{\equal{#1}{green}}{             \definecolor{themecolor}{HTML}{84D200}}{}
+\ifthenelse{\equal{#1}{pms-375}}{           \definecolor{themecolor}{HTML}{84D200}}{}
+% PMS 137
+\ifthenelse{\equal{#1}{orange}}{            \definecolor{themecolor}{HTML}{FF9A00}}{}
+\ifthenelse{\equal{#1}{pms-137}}{           \definecolor{themecolor}{HTML}{FF9A00}}{}
+% PMS 206
+\ifthenelse{\equal{#1}{darkred}}{           \definecolor{themecolor}{HTML}{D6004A}}{}
+\ifthenelse{\equal{#1}{pms-206}}{           \definecolor{themecolor}{HTML}{D6004A}}{}
+% PMS 226
+\ifthenelse{\equal{#1}{darkpink}}{          \definecolor{themecolor}{HTML}{D6007B}}{}
+\ifthenelse{\equal{#1}{pms-226}}{           \definecolor{themecolor}{HTML}{D6007B}}{}
+% PMS 253
+\ifthenelse{\equal{#1}{purple}}{            \definecolor{themecolor}{HTML}{AD20AD}}{}
+\ifthenelse{\equal{#1}{pms-253}}{           \definecolor{themecolor}{HTML}{AD20AD}}{}
+% PMS 2748
+\ifthenelse{\equal{#1}{darkblue}}{          \definecolor{themecolor}{HTML}{101073}}{}
+\ifthenelse{\equal{#1}{pms-2748}}{          \definecolor{themecolor}{HTML}{101073}}{}
+% PMS Yellow 012
+\ifthenelse{\equal{#1}{yellow}}{            \definecolor{themecolor}{HTML}{FFDD00}}{}
+\ifthenelse{\equal{#1}{pms-yellow-012}}{    \definecolor{themecolor}{HTML}{FFDD00}}{}
+% PMS 396
+\ifthenelse{\equal{#1}{lime}}{              \definecolor{themecolor}{HTML}{CEDF00}}{}
+\ifthenelse{\equal{#1}{pms-396}}{           \definecolor{themecolor}{HTML}{CEDF00}}{}
+% PMS Green
+\ifthenelse{\equal{#1}{aqua}}{              \definecolor{themecolor}{HTML}{00AC82}}{}
+\ifthenelse{\equal{#1}{pms-green}}{         \definecolor{themecolor}{HTML}{00AC82}}{}
+% PMS 3135
+\ifthenelse{\equal{#1}{marine}}{            \definecolor{themecolor}{HTML}{0092B5}}{}
+\ifthenelse{\equal{#1}{pms-3135}}{          \definecolor{themecolor}{HTML}{0092B5}}{}
+% PMS White
+\ifthenelse{\equal{#1}{white}}{             \definecolor{themecolor}{HTML}{FFFFFF}}{}
+\ifthenelse{\equal{#1}{pms-white}}{         \definecolor{themecolor}{HTML}{FFFFFF}}{}
 }
 \ProcessOptionsBeamer
 
