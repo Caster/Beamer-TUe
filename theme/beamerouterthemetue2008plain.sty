@@ -368,7 +368,7 @@
   
   \newcommand{\tue@atbeginsubsection}{
     \bgroup
-    \usebackgroundtemplate{\drawbackground[plain]}
+    \ifthenelse{\equal{\tocplain}{true}}{\usebackgroundtemplate{\drawbackground[plain]}}{}
     \hypersetup{
       hidelinks
     }
@@ -383,7 +383,7 @@
       \tableofcontents[currentsubsection]
     \end{frame}
     \egroup
-    \addtocounter{framenumber}{-1}
+    \ifthenelse{\equal{\tocplain}{true}}{\addtocounter{framenumber}{-1}}
   }
   
   \AtBeginSection[] {\tue@atbeginsection}
