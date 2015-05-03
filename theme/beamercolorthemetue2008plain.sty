@@ -2,6 +2,7 @@
 
 \RequirePackage{tuestyle2008}
 \definecolor{themecolor}{HTML}{F73131} % default is PMS Warm Red
+\definecolor{themetextcolor}{HTML}{FFFFFF}
 
 \DeclareOptionBeamer{theme}[red]{%
 % PMS Warm Red
@@ -32,8 +33,8 @@
 \ifthenelse{\equal{#1}{darkblue}}{          \definecolor{themecolor}{HTML}{101073}}{}
 \ifthenelse{\equal{#1}{pms-2748}}{          \definecolor{themecolor}{HTML}{101073}}{}
 % PMS Yellow 012
-\ifthenelse{\equal{#1}{yellow}}{            \definecolor{themecolor}{HTML}{FFDD00}}{}
-\ifthenelse{\equal{#1}{pms-yellow-012}}{    \definecolor{themecolor}{HTML}{FFDD00}}{}
+\ifthenelse{\equal{#1}{yellow}}{            \definecolor{themecolor}{HTML}{FFDD00} \definecolor{themetextcolor}{HTML}{000000}}{}
+\ifthenelse{\equal{#1}{pms-yellow-012}}{    \definecolor{themecolor}{HTML}{FFDD00} \definecolor{themetextcolor}{HTML}{000000}}{}
 % PMS 396
 \ifthenelse{\equal{#1}{lime}}{              \definecolor{themecolor}{HTML}{CEDF00}}{}
 \ifthenelse{\equal{#1}{pms-396}}{           \definecolor{themecolor}{HTML}{CEDF00}}{}
@@ -44,8 +45,8 @@
 \ifthenelse{\equal{#1}{marine}}{            \definecolor{themecolor}{HTML}{0092B5}}{}
 \ifthenelse{\equal{#1}{pms-3135}}{          \definecolor{themecolor}{HTML}{0092B5}}{}
 % PMS White
-\ifthenelse{\equal{#1}{white}}{             \definecolor{themecolor}{HTML}{FFFFFF}}{}
-\ifthenelse{\equal{#1}{pms-white}}{         \definecolor{themecolor}{HTML}{FFFFFF}}{}
+\ifthenelse{\equal{#1}{white}}{             \definecolor{themecolor}{HTML}{FFFFFF} \definecolor{themetextcolor}{HTML}{000000}}{}
+\ifthenelse{\equal{#1}{pms-white}}{         \definecolor{themecolor}{HTML}{FFFFFF} \definecolor{themetextcolor}{HTML}{000000}}{}
 }
 \ProcessOptionsBeamer
 
