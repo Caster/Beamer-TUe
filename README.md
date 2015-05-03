@@ -6,6 +6,7 @@ Table of contents
 -----------------
   * [Usage instructions](#usage-instructions)
   * [Options for the theme](#theme-options)
+  * [Theme colours](#theme-colours)
   * [Quoting](#quoting)
   * [TU/e font installation](#tue-font-installation)
     * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-miktex)
@@ -48,7 +49,7 @@ too for completeness.
 
 | Option key               | Default value  | Possible values                                                                                                | Option description                                                                                                                                                             |
 | ------------------------ | -------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| theme                    | red            | red, cyan, blue, green, orange                                                                                 | Used to change the colour theme of all slides.                                                                                                                                 |
+| theme                    | red            | Refer to the [theme colours](#theme-colours) section.                                                          | Used to change the colour theme of all slides.                                                                                                                                 |
 | department               | none           | none, ele, eleuk, win, winuk, bmt, bmtuk, bwk, bwkuk, id, iduk, chem, chemu, tm, tmuk, phys, physu, wtb, wtbuk | Used to change the deparment at the bottom of all slides. For example, 'winuk' will render 'department of mathematics and computer science' on every slide.                    |
 | statustext               | (empty string) | Any string.                                                                                                    | Text to put right after the department. Can be used to specify a custom value for the department, in conjuction with using 'none' for the department option.                   |
 | titlelogo                | (empty string) | Any string.                                                                                                    | Optional path to an image file, for inclusion on the title slide.                                                                                                              |
@@ -61,6 +62,29 @@ too for completeness.
 | tocslides                | false          | true, false                                                                                                    | If at the start of every `\section`, a slide should be inserted with a table of contents in which the section is highlighted.                                                  |
 | slidesperpage            | 1              | Any positive integer.                                                                                          | The number of slides to put per page. When handout is used, this value is set to 2 and cannot be overridden.                                                                   |
 | tocplain                 | true           | true, false                                                                                                    | If table of content slides are included whether to use the plain layout or the TUE layout (includes the toc-slide in the numbering)                                            |
+
+Theme colours
+-------------
+The following theme colours are available for use. Some colours can be used through multiple different names, just because we want to facilitate easy-to-use colour names and simulataneously precise colour names too (the PMS ones).
+
+| Preview                                                                           | Keys                       |
+| --------------------------------------------------------------------------------- | -------------------------- |
+| ![PMS Warm Red](https://caster.github.io/Beamer-TUe/img/pms-warm-red.png)         | `red`, `pms-warm-red`      |
+| ![PMS Process Cyan](https://caster.github.io/Beamer-TUe/img/pms-process-cyan.png) | `cyan`, `pms-process-cyan` |
+| ![PMS 300](https://caster.github.io/Beamer-TUe/img/pms-300.png)                   | `blue`, `pms-300`          |
+| ![PMS 375](https://caster.github.io/Beamer-TUe/img/pms-375.png)                   | `green`, `pms-375`         |
+| ![PMS 137](https://caster.github.io/Beamer-TUe/img/pms-137.png)                   | `orange`, `pms-137`        |
+| ![PMS 206](https://caster.github.io/Beamer-TUe/img/pms-206.png)                   | `darkred`, `pms-206`       |
+| ![PMS 226](https://caster.github.io/Beamer-TUe/img/pms-226.png)                   | `darkpink`, `pms-226`      |
+| ![PMS 253](https://caster.github.io/Beamer-TUe/img/pms-253.png)                   | `purple`, `pms-253`        |
+| ![PMS 2748](https://caster.github.io/Beamer-TUe/img/pms-2748.png)                 | `darkblue`, `pms-2748`     |
+| ![PMS Yellow 012](https://caster.github.io/Beamer-TUe/img/pms-yellow-012.png)     | `yellow`, `pms-yellow-012` |
+| ![PMS 396](https://caster.github.io/Beamer-TUe/img/pms-396.png)                   | `lime`, `pms-396`          |
+| ![PMS Green](https://caster.github.io/Beamer-TUe/img/pms-green.png)               | `aqua`, `pms-green`        |
+| ![PMS 3135](https://caster.github.io/Beamer-TUe/img/pms-3135.png)                 | `marine`, `pms-3135`       |
+| ![PMS White](https://caster.github.io/Beamer-TUe/img/pms-white.png)               | `white`, `pms-white`       |
+
+Note that for the PMS Yellow 012 and PMS White theme colours, the text colour for headers will be black. In all other cases, the text colour will be white.
 
 Quoting
 -------
