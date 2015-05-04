@@ -4,6 +4,24 @@
 \definecolor{themecolor}{HTML}{F73131} % default is PMS Warm Red
 \definecolor{themetextcolor}{HTML}{FFFFFF}
 
+% -- http://tex.stackexchange.com/a/100213/23145
+% this is found in latex.ltx:
+% \def\@car#1#2\@nil{#1}
+\def\iffirsttoken#1#2{%
+  % define \@first@token to be the once expanded \@car of the first argument
+  % i.e. the first token or balanced group:
+  \expandafter\def\expandafter\@first@token\expandafter{\@car#1\@nil}%
+  % test if the expansion of \@first@token is the same as #2:
+  \expandafter\ifx\@first@token#2\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+% -- http://tex.stackexchange.com/a/100220/23145
+% strip starting \# from string
+\newcommand\strippound[1]{\expandafter\ifx\expandafter\##1\else#1\fi}
+
 \DeclareOptionBeamer{theme}[red]{%
 % PMS Warm Red
 \ifthenelse{\equal{#1}{red}}{               \definecolor{themecolor}{HTML}{F73131}}{}
@@ -47,6 +65,8 @@
 % PMS White
 \ifthenelse{\equal{#1}{white}}{             \definecolor{themecolor}{HTML}{FFFFFF} \definecolor{themetextcolor}{HTML}{000000}}{}
 \ifthenelse{\equal{#1}{pms-white}}{         \definecolor{themecolor}{HTML}{FFFFFF} \definecolor{themetextcolor}{HTML}{000000}}{}
+% Custom?
+\iffirsttoken{#1}{\#}{                      \definecolor{themecolor}{HTML}{\strippound{#1}}}{}
 }
 \ProcessOptionsBeamer
 

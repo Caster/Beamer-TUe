@@ -65,7 +65,9 @@ too for completeness.
 
 Theme colours
 -------------
-The following theme colours are available for use. Some colours can be used through multiple different names, just because we want to facilitate easy-to-use colour names and simulataneously precise colour names too (the PMS ones).
+The following theme colours are available for use. Some colours can be used 
+through multiple different names, just because we want to facilitate easy-to-use 
+colour names and simulataneously precise colour names too (the PMS ones).
 
 | Preview                                                                           | Keys                       |
 | --------------------------------------------------------------------------------- | -------------------------- |
@@ -84,7 +86,15 @@ The following theme colours are available for use. Some colours can be used thro
 | ![PMS 3135](https://caster.github.io/Beamer-TUe/img/pms-3135.png)                 | `marine`, `pms-3135`       |
 | ![PMS White](https://caster.github.io/Beamer-TUe/img/pms-white.png)               | `white`, `pms-white`       |
 
-Note that for the PMS Yellow 012 and PMS White theme colours, the text colour for headers will be black. In all other cases, the text colour will be white.
+Note that for the PMS Yellow 012 and PMS White theme colours, the text colour 
+for headers will be black. In all other cases, the text colour will be white.
+
+Finally, it is possible to select a custom theme colour. The text is always 
+white at the moment, so be aware of that. Also, it is not recommended to use a 
+custom colour, because the TU/e has a well-defined and well-balanced colour 
+palette. Now that you are warned: you can pass the value `\#bada55`, or any 
+other HTML colour code, to use that as a theme colour. Again, the text will be 
+white and we do not recommend you do this, but you can if you really want to.
 
 Quoting
 -------
