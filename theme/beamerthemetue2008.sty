@@ -43,6 +43,14 @@
 \newcommand{\spp}{1}
 \DeclareOptionBeamer{slidesperpage}{\renewcommand{\spp}{#1}}
 
+\DeclareOptionBeamer{tuefont}
+{\ifthenelse{\equal{#1}{false}}{\PassOptionsToPackage{tuefont}{tuestyle2008}}{}}
+%As there are only two options we only need to pass tuefont as option when we want the non-default behavior
+
+\DeclareOptionBeamer{sans}
+{\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{sans}{tuestyle2008}}{}}
+%same argumentation as tuefont
+
 \only<handout>{
   \renewcommand{\spp}{2}
 }

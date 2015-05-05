@@ -6,10 +6,21 @@
 \RequirePackage{ifthen}
 \RequirePackage{xcolor}
 
+\newcommand{\tuefont}{true}
+\DeclareOption{tuefont}{\renewcommand{\tuefont}{false}}
+
+\newcommand{\sans}{false}
+\DeclareOption{sans}{\renewcommand{\sans}{true}}
+
+\ProcessOptions
+
+\ifthenelse{\equal{\sans}{false}}{\renewcommand{\familydefault}{\rmdefault}}{\renewcommand{\familydefault}{\sfdefault}}
+
 % Activate the default TU/e fonts.
-\renewcommand{\rmdefault}{zmb}
-\renewcommand{\sfdefault}{zmb}
-\renewcommand{\ttdefault}{pcr}
+%if option tuefont is true, then use tue fonts otherwise do not set anything (use default)
+\ifthenelse{\equal{\tuefont}{true}}{\renewcommand{\rmdefault}{zmb}}{}
+\ifthenelse{\equal{\tuefont}{true}}{\renewcommand{\sfdefault}{zmb}}{}
+\ifthenelse{\equal{\tuefont}{true}}{\renewcommand{\ttdefault}{pcr}}{}
 
 % Define the TU/e colors.
 % Main Colours:
