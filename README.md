@@ -62,6 +62,7 @@ too for completeness.
 | tocslides                | false          | true, false                                                                                                    | If at the start of every `\section`, a slide should be inserted with a table of contents in which the section is highlighted.                                                  |
 | slidesperpage            | 1              | Any positive integer.                                                                                          | The number of slides to put per page. When handout is used, this value is set to 2 and cannot be overridden.                                                                   |
 | tocplain                 | true           | true, false                                                                                                    | If table of content slides are included whether to use the plain layout or the TUE layout (includes the toc-slide in the numbering)                                            |
+| tuefont                  | true           | true, false                                                                                                    | If option is set to true, it will use the tuefont otherwise it will use the default font.                                                                                      |
 
 Theme colours
 -------------
