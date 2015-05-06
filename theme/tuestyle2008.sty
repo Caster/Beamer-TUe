@@ -7,14 +7,9 @@
 \RequirePackage{xcolor}
 
 \newcommand{\tuefont}{true}
-\DeclareOption{tuefont}{\renewcommand{\tuefont}{false}}
+\DeclareOption{tuefont}{\renewcommand{\tuefont}{false}} 
 
-\newcommand{\sans}{false}
-\DeclareOption{sans}{\renewcommand{\sans}{true}}
-
-\ProcessOptions
-
-\ifthenelse{\equal{\sans}{false}}{\renewcommand{\familydefault}{\rmdefault}}{\renewcommand{\familydefault}{\sfdefault}}
+\ProcessOptions 
 
 % Activate the default TU/e fonts.
 %if option tuefont is true, then use tue fonts otherwise do not set anything (use default)
