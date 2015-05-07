@@ -40,6 +40,9 @@
 \DeclareOptionBeamer{tocplain}
 {\PassOptionsToPackage{tocplain=#1}{beamerouterthemetue2008plain}}
 
+\DeclareOptionBeamer{tocstyle}
+{\PassOptionsToPackage{tocstyle=#1}{beamerouterthemetue2008plain}}
+
 \DeclareOptionBeamer{tuefont}
 {\ifthenelse{\equal{#1}{false}}{\PassOptionsToPackage{tuefont}{tuestyle2008}}{}}
 %As there are only two options we only need to pass tuefont as option when we want the non-default behavior

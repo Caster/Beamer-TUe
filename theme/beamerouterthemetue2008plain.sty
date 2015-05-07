@@ -36,6 +36,9 @@
 \newcommand{\tocplain}{true}
 \DeclareOptionBeamer{tocplain}{\renewcommand{\tocplain}{#1}}
 
+\newcommand{\tocstyle}{clear}
+\DeclareOptionBeamer{tocstyle}{\renewcommand{\tocstyle}{#1}}
+
 \ProcessOptionsBeamer
 
 \mode<presentation>
@@ -360,7 +363,11 @@
     \setbeamertemplate{subsection in toc shaded}[default][100]
     \begin{frame}{}
       \vspace*{-3em}
-      \tableofcontents[currentsection]
+      \ifthenelse{\equal{\tocstyle}{all}}{
+      		\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+      }{      
+       	\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+      }
     \end{frame}
     \egroup
     \ifthenelse{\equal{\tocplain}{true}}{\addtocounter{framenumber}{-1}}
