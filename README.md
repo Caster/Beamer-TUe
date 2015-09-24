@@ -146,8 +146,8 @@ repository. You can skip this step if you cloned the repository.
   2. There are now two options. You can install the font system-wide, or only
 for your local user. If you have root access, we recommend the system-wide
 installation.
-    1. Find out where your system-wide local `texmf` directory is located. You
-can do so by executing (need not be run as root):
+    1. *(system-wide)* Find out where your system-wide local `texmf` directory 
+        is located. You can do so by executing (need not be run as root):
 
         <pre>
         <b>$</b> kpsewhich --var-value TEXMFLOCAL
@@ -165,22 +165,25 @@ can do so by executing (need not be run as root):
         You can now unzip the archive in this local `texmf` directory, possibly 
         creating the directory if it does not exist yet.
 
-    2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`.
-If this `texmf` folder does not exist yet, you can create it. The name and 
-location of this folder are important, because your LaTeX distribution will look 
-in this directory for fonts and packages.
+    2. *(single user)* Unzip the archive in a `texmf` directory in your home 
+        folder, so `~/texmf`. If this `texmf` folder does not exist yet, you can 
+        create it. The name and location of this folder are important, because 
+        your LaTeX distribution will look in this directory for fonts and 
+        packages.
 
-  3. The next step is to let LaTeX know that you installed a font. Again, there are two options depending on if your installation is system-wide or not.
-    1. Open a command line and run the following commands (if you do not have 
-`sudo` installed, run them as root, so `su` before you start them and without 
-`sudo` per command):
+  3. The next step is to let LaTeX know that you installed a font. Again, there 
+are two options depending on if your installation is system-wide or not.
+    1. *(system-wide)* Open a command line and run the following commands (if you 
+        do not have `sudo` installed, run them as root, so `su` before you start 
+        them and without `sudo` per command):
 
         <pre>
         <b>$</b> sudo mktexlsr
         <b>$</b> sudo updmap-sys --enable Map=tue.map
         </pre>
 
-    2. Open a command line and run the following command (not as root):
+    2. *(single user)* Open a command line and run the following command (not as 
+        root):
     
         <pre>
         <b>$</b> updmap --enable Map=tue.map
