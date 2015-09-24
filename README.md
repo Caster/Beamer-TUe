@@ -140,23 +140,78 @@ do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues).
 In case there is a problem with Beamer-TUe, you are welcome to open a [pull 
 request](https://github.com/Caster/Beamer-TUe/pulls).
 
-  1. Download the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder 
-in the repository. You can skip this step if you cloned the repository.
-  2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`. 
+  1. [Download](https://github.com/Caster/Beamer-TUe/blob/master/TUe-fonts/latex_huisstijl.zip?raw=true)
+the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the
+repository. You can skip this step if you cloned the repository.
+  2. There are now two options. You can install the font system-wide, or only
+for your local user. If you have root access, we recommend the system-wide
+installation.
+    1. Find out where your system-wide local `texmf` directory is located. You
+can do so by executing (need not be run as root):
+
+        <pre>
+        <b>$</b> kpsewhich --var-value TEXMFLOCAL
+        </pre>
+    
+        If this does not give any output, then the value is not set. You can set 
+        it to any directory you like using the below command. Normally, this 
+        directory will be `/usr/local/texlive/texmf-local` or 
+        `/usr/local/share/texmf` for example.
+
+        <pre>
+        <b>$</b> tlmgr conf texmf TEXMFLOCAL /usr/local/share/texmf
+        </pre>
+
+        You can now unzip the archive in this local `texmf` directory, possibly 
+        creating the directory if it does not exist yet.
+
+    2. Unzip the archive in a `texmf` directory in your home folder, so `~/texmf`.
 If this `texmf` folder does not exist yet, you can create it. The name and 
 location of this folder are important, because your LaTeX distribution will look 
 in this directory for fonts and packages.
-  3. Next, open a command line and `cd` to `~/texmf/dvips/config/`. Run the 
-following commands (if you do not have `sudo` installed, run them as root, so 
-`su` before you start them and without `sudo`):
 
-<pre>
-<b>$</b> sudo updmap-sys --enable Map=tue.map
-<b>$</b> sudo mktexlsr
-</pre>
+  3. The next step is to let LaTeX know that you installed a font. Again, there are two options depending on if your installation is system-wide or not.
+    1. Open a command line and run the following commands (if you do not have 
+`sudo` installed, run them as root, so `su` before you start them and without 
+`sudo` per command):
+
+        <pre>
+        <b>$</b> sudo mktexlsr
+        <b>$</b> sudo updmap-sys --enable Map=tue.map
+        </pre>
+
+    2. Open a command line and run the following command (not as root):
+    
+        <pre>
+        <b>$</b> updmap --enable Map=tue.map
+        </pre>
 
 Congratulations, you should now be able to use the `zmb` font family in LaTeX 
 and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however.
+
+####Troubleshooting
+Make sure LaTeX can find the TU/e fonts by executing the following command, that 
+should output the path to your `texmf` directory followed by `fonts/map/tue.map`. 
+Example output is provided below.
+
+<pre>
+<b>$</b> kpsewhich tue.map
+/usr/local/share/texmf/fonts/map/tue.map
+</pre>
+
+If this command does not give any output, make sure your `texmf` directory is 
+known by LaTeX. Check if it is listed in the output of (again, sample output)
+
+<pre>
+<b>$</b> tlmgr conf 2>&1 | grep '^TEXMF[LH]'
+TEXMFLOCAL=/usr/local/share/texmf
+TEXMFHOME=/home/thom/texmf
+</pre>
+
+If not, use `tlmgr conf texmf TEXMFLOCAL /usr/local/share/texmf`, substituting 
+the variable and path to what you need, to set either `TEXMFLOCAL` (for 
+system-wide installations) or `TEXMFHOME` (for single user installations) to the 
+path to your `texmf` directory.
 
 ###Font installation on Windows (MiKTeX)
 Installing the TU/e font on Windows in such a way that LaTeX can use it is 
