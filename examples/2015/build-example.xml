@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-example" basedir="." default="latex">
+
+    <target name="clean" description="Delete all generated files, excluding the PDF">
+        <echo message="Cleaning example '${dirname}'..." />
+        <delete file="${dirname}/${texname}.aux" />
+        <delete file="${dirname}/${texname}.log" />
+        <delete file="${dirname}/${texname}.nav" />
+        <delete file="${dirname}/${texname}.out" />
+        <delete file="${dirname}/${texname}.snm" />
+        <delete file="${dirname}/${texname}.toc" />
+        <delete file="${dirname}/${texname}.vrb" />
+    </target>
+
+    <target name="clean-all" description="Delete all generated files, including the PDF" depends="clean">
+        <echo message="Cleaning (all) example '${dirname}'..." />
+        <delete file="${dirname}/${texname}.dvi" />
+        <delete file="${dirname}/${texname}.pdf" />
+    </target>
+
+    <target name="latex" description="Run pdflatex">
+        <echo message="Building example '${dirname}'..." />
+        <!-- Suppress output from copy task -->
+        <script language="javascript">
+            var logger = project.getBuildListeners().firstElement();
+            logger.setMessageOutputLevel(0);
+        </script>
+        <!-- Copy theme files to current directory -->
+        <copy todir="${dirname}">
+            <fileset id="copythemefiles" dir="${themedir}" includes="${themefiles}" />
+        </copy>
+        <!-- Stop suppressing output -->
+        <script language="javascript">
+            var logger = project.getBuildListeners().firstElement();
+            logger.setMessageOutputLevel(2);
+        </script>
+        <!-- Load LatexTask from JAR defined in build.properties file -->
+        <taskdef name="latextask" classname="LatexTask" classpath="${latextaskjar}" />
+        <!-- Run LaTeX, twice -->
+        <latextask dir="${dirname}" input="${texname}.tex" />
+        <latextask dir="${dirname}" input="${texname}.tex" />
+        <!-- Delete copied theme files -->
+        <delete>
+            <fileset id="deletethemefiles" dir="${dirname}" includes="${themefiles}" />
+            <dirset id="deletethemefiledirs" dir="${dirname}" includes="${themefiledirs}" />
+        </delete>
+    </target>
+
+</project>
