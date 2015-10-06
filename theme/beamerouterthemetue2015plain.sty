@@ -164,7 +164,8 @@
         % Title
         \pgftext[at=\pgfpoint{0.5cm}{\the\paperheight-1.9cm},left,top]{\color{white}\normalfont\fontsize{18}{18}\selectfont\bfseries%
         \newlength{\titlewidth}
-        \setlength{\titlewidth}{11.19cm}
+        \ifdim\beamer@paperheight=9.00cm%
+          \setlength{\titlewidth}{11.19cm}
         \else
           \setlength{\titlewidth}{9.19cm}
         \fi
