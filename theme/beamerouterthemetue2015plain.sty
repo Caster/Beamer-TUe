@@ -122,79 +122,40 @@
                                 % Very annoying otherwise with psnup
 
         \normalsize\selectfont
-        % white surface right of diagonal line
-        \pgfsetcolor{white}
-        \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.67cm}{0cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth-2.84cm}{\the\paperheight}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{0cm}}
-        \pgfusepath{fill}
 
-        % Logo
-        \ifthenelse{\equal{\titlelogos}{}}{%
-          \relax
-        }
-        {
-          \pgftext[at=\pgfpoint{\the\paperwidth/2}{\the\paperheight-1cm},center,center]{\includegraphics[height=1.26cm]{\titlelogos}}%
-        }
-
-        % Background image
-        \ifthenelse{\equal{\titlebgimage}{}}{%
-            \pgfsetcolor{themecolor}
-            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-            \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
-            \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
-            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-            \pgfusepath{fill}
-            \pgfsetcolor{tuedarkblue}
-            % surface left of main image
-            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-            \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
-            \pgfpathlineto{\pgfpoint{\the\paperwidth-3.21cm}{\the\paperheight-1.98cm}}
-            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-            \pgfusepath{fill}
-        }{
-            \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm},right,base]{\textcolor{black}{\includegraphics[height=5.57cm]{\titlebgimage}}}%
-            \pgfsetcolor{themecolor}
-            \pgfsetfillopacity{\titlebgimagetransparency}
-            % surface left of main image
-            \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-            \pgfpathlineto{\pgfpoint{\the\paperwidth-4.82cm}{\the\paperheight-7.56cm}}
-            \pgfpathlineto{\pgfpoint{\the\paperwidth-3.2cm}{\the\paperheight-1.98cm}}
-            \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-            \pgfusepath{fill}
-            \pgfsetfillopacity{1}
-        }
-
-
-
-        % diagonal line
+        % background image
+        \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-1.4cm},right,base]{\textcolor{black}{\includegraphics[height=\the\paperheight-2.1cm]{\titlebgimage}}}%
+        
+        % surface below the title
+        \pgfsetcolor{themecolor}
+        \pgfsetfillopacity{\titlebgimagetransparency}
+        \begin{pgfscope}
+         \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-5cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-5cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.4cm}}
+         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.4cm}}
+         \pgfusepath{clip}
+         \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.9cm}{0cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth-3.25cm}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{0cm}}
+         \pgfusepath{fill}
+        \end{pgfscope}
+        \pgfsetfillopacity{1}
+        
+        % red lines
+        \pgfsetlinewidth{0.3pt}
         \pgfsetcolor{tuered}
-        \ifdim\beamer@paperheight=9.00cm%
-          \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.24cm}{0cm}}
-          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
-          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.63cm}{\the\paperheight}}
-          \pgfpathlineto{\pgfpoint{\the\paperwidth-5.22cm}{0cm}}
-        \else
-          \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.42cm}{0cm}}
-          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.65cm}{\the\paperheight}}
-          \pgfpathlineto{\pgfpoint{\the\paperwidth-2.64cm}{\the\paperheight}}
-          \pgfpathlineto{\pgfpoint{\the\paperwidth-5.4cm}{0cm}}
-        \fi
-        \pgfusepath{fill}
-        % lower horizontal line
-        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.56cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-7.55cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-7.55cm}}
-        \pgfusepath{fill}
-        % upper horizontal line
-        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.98cm}}
-        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.99cm}}
-        \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.99cm}}
-        \pgfusepath{fill}
-
+        \pgfpathmoveto{\pgfpoint{0cm}{0.8cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{0.8cm}}
+        \pgfusepath{draw}
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.4cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.4cm}}
+        \pgfusepath{draw}
+        \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.9cm}{0cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-3.25cm}{\the\paperheight}}
+        \pgfusepath{draw}
+        
         % TU/e slogan: Where innovation starts
         \ifbeamer@innovation
           \ifdim\beamer@paperheight=9.00cm%
@@ -205,14 +166,13 @@
         \fi
 
         % Title
-        \pgftext[at=\pgfpoint{1cm}{\the\paperheight-3.15cm},left,top]{\ifthenelse{\equal{\titlebgimage}{}}{\color{white}}{\color{themetextcolor}}\normalfont\fontsize{18}{18}\selectfont\bfseries%
+        \pgftext[at=\pgfpoint{0.5cm}{\the\paperheight-1.9cm},left,top]{\ifthenelse{\equal{\titlebgimage}{}}{\color{white}}{\color{themetextcolor}}\normalfont\fontsize{18}{18}\selectfont\bfseries%
         \newlength{\titlewidth}
-        \ifdim\beamer@paperheight=9.00cm%
-          \setlength{\titlewidth}{10.19cm}
+        \setlength{\titlewidth}{11.19cm}
         \else
-          \setlength{\titlewidth}{8.19cm}
+          \setlength{\titlewidth}{9.19cm}
         \fi
-        \begin{minipage}[b]{\titlewidth}
+        \begin{minipage}[t][2.6cm][c]{\titlewidth} % height = 5 - 1.4 - 2 * 0.5 (margins) = 2.6
         \raggedright
         \inserttitle
 
@@ -221,16 +181,12 @@
         \insertauthor
         \end{minipage}
         }%
-
-        % page number
-        \ifnum\thepage=1\relax\else
-        \pgftext[at=\pgfpoint{\the\paperwidth-0.76cm}{\the\paperheight-2.39cm},left,base]{\thepage}%
-        \fi
+        
         % TU/e logo
-        \pgftext[at=\pgfpoint{\the\paperwidth-6.05cm}{\the\paperheight-7.87cm},left,top]{%
-          \TUElogo
+        \pgftext[at=\pgfpoint{\the\paperwidth-4.67cm}{\the\paperheight-1.4cm},left,base]{%
+          \TUElogobig
         }
-
+        
         \ifdim\beamer@paperheight=9.00cm%
           \pgftext[at=\pgfpoint{0.441cm}{0.82cm},left,top]{\color{tuered}\tiny\insertdate{}}%
         \else%
