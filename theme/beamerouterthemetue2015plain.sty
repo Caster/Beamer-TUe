@@ -124,7 +124,7 @@
         \normalsize\selectfont
 
         % background image
-        \pgftext[at=\pgfpoint{\the\paperwidth}{\the\paperheight-1.4cm},right,base]{\textcolor{black}{\includegraphics[height=\the\paperheight-2.1cm]{\titlebgimage}}}%
+        \pgftext[at=\pgfpoint{\the\paperwidth}{0.8cm},right,base]{\textcolor{black}{\includegraphics[height=\the\paperheight-2.2cm]{\titlebgimage}}}%
         
         % surface below the title
         \pgfsetcolor{themecolor}
@@ -162,7 +162,7 @@
         \fi
 
         % Title
-        \pgftext[at=\pgfpoint{0.5cm}{\the\paperheight-1.9cm},left,top]{\ifthenelse{\equal{\titlebgimage}{}}{\color{white}}{\color{themetextcolor}}\normalfont\fontsize{18}{18}\selectfont\bfseries%
+        \pgftext[at=\pgfpoint{0.5cm}{\the\paperheight-1.9cm},left,top]{\color{white}\normalfont\fontsize{18}{18}\selectfont\bfseries%
         \newlength{\titlewidth}
         \setlength{\titlewidth}{11.19cm}
         \else

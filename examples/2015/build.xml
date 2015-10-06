@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="build-all-examples" basedir="." default="latex">
 
-    <property name="dirnames" value="hello-world,title-frame" />
+    <property name="dirnames" value="hello-world,title-frame,title-frame-bg-image" />
 
     <include file="build-example.xml" as="build" />
 
