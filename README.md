@@ -5,6 +5,7 @@ An extension of the TU/e theme for the LaTeX Beamer class.
 Table of contents
 -----------------
   * [Usage instructions](#usage-instructions)
+  * [Creating slides](#creating-slides)
   * [Options for the theme](#theme-options)
   * [Theme colours](#theme-colours)
   * [Quoting](#quoting)
@@ -18,7 +19,7 @@ grab the contents of the `theme` directory and put that in the same directory as
 where your main TeX source file is located. After that, you should be able to 
 use the TU/e Beamer theme in your Beamer presentation using the following lines:
 
-```
+```latex
 \usetheme[department=winuk,official=false,theme=cyan,innovation=false]{tue2008}
 \mode<presentation>
 ```
@@ -29,7 +30,7 @@ to [Options for the theme](#theme-options). It is probably best to put these
 lines right after your `\usepackage` declarations, which in turn should come 
 after the
 
-```
+```latex
 \documentclass[12pt, aspectratio=169]{beamer} % aspectratio = 43 or 169
 ```
 
@@ -38,6 +39,50 @@ line at the top of your TeX source file.
 At the moment, the theme only works correctly when using PDFLaTeX. With XeLaTeX, 
 there are strange problems: for example the slide number becomes black instead 
 of the correct theme colour.
+
+Creating slides
+---------------
+Slides can be created just normally, like explained in the Beamer manual; see,
+for example, [here](https://www.ctan.org/pkg/beamer). There are a few special
+commands you can use to achieve special effects in the TU/e theme.
+
+### The title frame
+
+The standard way to make title frames in Beamer is
+
+````latex
+\begin{frame}
+    \titlepage
+\end{frame}
+````
+
+This also works somewhat in the TU/e style, but the resulting title slide does
+not look like the usual TU/e-styled title slides at all. Therefore, this theme
+provides a special environment `titleframe`:
+
+````latex
+\begin{titleframe}
+\end{titleframe}
+````
+
+### Plain frames
+
+The syntax
+
+````latex
+\begin{frame}[plain]
+    % ...
+\end{frame}
+````
+
+to make plain frames (without titles and backgrounds) is not supported in this
+theme. Use the special environment `plainframe` instead:
+
+````latex
+\begin{plainframe}
+    % ...
+\end{plainframe}
+````
 
 Theme options
 -------------
