@@ -139,7 +139,7 @@ for headers will be black. In all other cases, the text colour will be white.
 Finally, it is possible to select a custom theme colour. The text is always 
 white at the moment, so be aware of that. Also, it is not recommended to use a 
 custom colour, because the TU/e has a well-defined and well-balanced colour 
-palette. Now that you are warned: you can pass the value `\#bada55`, or any 
+palette. Now that you are warned: you can pass the value `\#BADA55`, or any 
 other HTML colour code, to use that as a theme colour. Again, the text will be 
 white and we do not recommend you do this, but you can if you really want to.
 
