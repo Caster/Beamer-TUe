@@ -116,22 +116,22 @@ The following theme colours are available for use. Some colours can be used
 through multiple different names, just because we want to facilitate easy-to-use 
 colour names and simulataneously precise colour names too (the PMS ones).
 
-| Preview                                                                           | Keys                       |
-| --------------------------------------------------------------------------------- | -------------------------- |
-| ![PMS Warm Red](https://caster.github.io/Beamer-TUe/img/pms-warm-red.png)         | `red`, `pms-warm-red`      |
-| ![PMS Process Cyan](https://caster.github.io/Beamer-TUe/img/pms-process-cyan.png) | `cyan`, `pms-process-cyan` |
-| ![PMS 300](https://caster.github.io/Beamer-TUe/img/pms-300.png)                   | `blue`, `pms-300`          |
-| ![PMS 375](https://caster.github.io/Beamer-TUe/img/pms-375.png)                   | `green`, `pms-375`         |
-| ![PMS 137](https://caster.github.io/Beamer-TUe/img/pms-137.png)                   | `orange`, `pms-137`        |
-| ![PMS 206](https://caster.github.io/Beamer-TUe/img/pms-206.png)                   | `darkred`, `pms-206`       |
-| ![PMS 226](https://caster.github.io/Beamer-TUe/img/pms-226.png)                   | `darkpink`, `pms-226`      |
-| ![PMS 253](https://caster.github.io/Beamer-TUe/img/pms-253.png)                   | `purple`, `pms-253`        |
-| ![PMS 2748](https://caster.github.io/Beamer-TUe/img/pms-2748.png)                 | `darkblue`, `pms-2748`     |
-| ![PMS Yellow 012](https://caster.github.io/Beamer-TUe/img/pms-yellow-012.png)     | `yellow`, `pms-yellow-012` |
-| ![PMS 396](https://caster.github.io/Beamer-TUe/img/pms-396.png)                   | `lime`, `pms-396`          |
-| ![PMS Green](https://caster.github.io/Beamer-TUe/img/pms-green.png)               | `aqua`, `pms-green`        |
-| ![PMS 3135](https://caster.github.io/Beamer-TUe/img/pms-3135.png)                 | `marine`, `pms-3135`       |
-| ![PMS White](https://caster.github.io/Beamer-TUe/img/pms-white.png)               | `white`, `pms-white`       |
+| Preview                                                                           | Keys                       | HTML      |
+| --------------------------------------------------------------------------------- | -------------------------- |-----------|
+| ![PMS Warm Red](https://caster.github.io/Beamer-TUe/img/pms-warm-red.png)         | `red`, `pms-warm-red`      | `#f73131` |
+| ![PMS Process Cyan](https://caster.github.io/Beamer-TUe/img/pms-process-cyan.png) | `cyan`, `pms-process-cyan` | `#00a2de` |
+| ![PMS 300](https://caster.github.io/Beamer-TUe/img/pms-300.png)                   | `blue`, `pms-300`          | `#0066cc` |
+| ![PMS 375](https://caster.github.io/Beamer-TUe/img/pms-375.png)                   | `green`, `pms-375`         | `#84d200` |
+| ![PMS 137](https://caster.github.io/Beamer-TUe/img/pms-137.png)                   | `orange`, `pms-137`        | `#ff9a00` |
+| ![PMS 206](https://caster.github.io/Beamer-TUe/img/pms-206.png)                   | `darkred`, `pms-206`       | `#d6004a` |
+| ![PMS 226](https://caster.github.io/Beamer-TUe/img/pms-226.png)                   | `darkpink`, `pms-226`      | `#d6007b` |
+| ![PMS 253](https://caster.github.io/Beamer-TUe/img/pms-253.png)                   | `purple`, `pms-253`        | `#ad20ad` |
+| ![PMS 2748](https://caster.github.io/Beamer-TUe/img/pms-2748.png)                 | `darkblue`, `pms-2748`     | `#101073` |
+| ![PMS Yellow 012](https://caster.github.io/Beamer-TUe/img/pms-yellow-012.png)     | `yellow`, `pms-yellow-012` | `#ffdd00` |
+| ![PMS 396](https://caster.github.io/Beamer-TUe/img/pms-396.png)                   | `lime`, `pms-396`          | `#cedf00` |
+| ![PMS Green](https://caster.github.io/Beamer-TUe/img/pms-green.png)               | `aqua`, `pms-green`        | `#00ac82` |
+| ![PMS 3135](https://caster.github.io/Beamer-TUe/img/pms-3135.png)                 | `marine`, `pms-3135`       | `#0092b5` |
+| ![PMS White](https://caster.github.io/Beamer-TUe/img/pms-white.png)               | `white`, `pms-white`       | `#ffffff` |
 
 Note that for the PMS Yellow 012 and PMS White theme colours, the text colour 
 for headers will be black. In all other cases, the text colour will be white.
