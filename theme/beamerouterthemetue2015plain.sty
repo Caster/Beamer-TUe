@@ -1,0 +1,294 @@
+\RequirePackage{calc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{ifthen}
+
+\newif\ifbeamer@official
+\beamer@officialfalse
+\DeclareOptionBeamer{official}[false]{\csname beamer@official#1\endcsname}
+
+\newcommand{\dept}{none}
+\DeclareOptionBeamer{department}{\renewcommand{\dept}{#1}}
+
+\newif\ifbeamer@innovation
+\beamer@innovationfalse
+\DeclareOptionBeamer{innovation}[false]{\csname beamer@innovation#1\endcsname}
+
+\newif\ifbeamer@realpagenumbers
+\beamer@realpagenumbersfalse
+\DeclareOptionBeamer{realpagenumbers}[true]{\csname beamer@realpagenumbers#1\endcsname}
+
+\newif\ifbeamer@tocslides
+\beamer@tocslidesfalse
+\DeclareOptionBeamer{tocslides}[false]{\csname beamer@tocslides#1\endcsname}
+
+\newcommand{\statustext}{}
+\DeclareOptionBeamer{statustext}{\renewcommand{\statustext}{#1}}
+
+\newcommand{\titlelogos}{}
+\DeclareOptionBeamer{titlelogo}{\renewcommand{\titlelogos}{#1}}
+
+\newcommand{\titlebgimage}{}
+\DeclareOptionBeamer{titlebgimage}{\renewcommand{\titlebgimage}{#1}}
+
+\newcommand{\titlebgimagetransparency}{0.65}
+\DeclareOptionBeamer{titlebgimagetransparency}{\renewcommand{\titlebgimagetransparency}{#1}}
+
+\newcommand{\tocplain}{true}
+\DeclareOptionBeamer{tocplain}{\renewcommand{\tocplain}{#1}}
+
+\newcommand{\tocstyle}{clear}
+\DeclareOptionBeamer{tocstyle}{\renewcommand{\tocstyle}{#1}}
+
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\newcommand{\drawbackground}[1][full]{%
+    \begin{pgfpicture}{0cm}{0cm}{\the\paperwidth}{\the\paperheight}
+        \fontsize{12}{12}\selectfont
+        
+        % blue triangle
+        \pgfsetcolor{tuedarkblue}
+        \begin{pgfscope}
+         \pgfpathmoveto{\pgfpoint{0cm}{0.8cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{0.8cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{0cm}}
+         \pgfpathlineto{\pgfpoint{0cm}{0cm}}
+         \pgfusepath{clip}
+         \pgfpathmoveto{\pgfpoint{0.75cm}{0cm}}
+         \pgfpathlineto{\pgfpoint{3.4cm}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{0cm}}
+         \pgfusepath{fill}
+        \end{pgfscope}
+        
+        % red lines
+        \pgfsetlinewidth{0.3pt}
+        \pgfsetcolor{tuered}
+        \pgfpathmoveto{\pgfpoint{0cm}{0.8cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{0.8cm}}
+        \pgfusepath{draw}
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-0.7cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-0.7cm}}
+        \pgfusepath{draw}
+        \begin{pgfscope}
+         \pgfpathmoveto{\pgfpoint{0cm}{0.8cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{0.8cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{0cm}}
+         \pgfpathlineto{\pgfpoint{0cm}{0cm}}
+         \pgfusepath{clip}
+         \pgfpathmoveto{\pgfpoint{0.75cm}{0cm}}
+         \pgfpathlineto{\pgfpoint{3.4cm}{\the\paperheight}}
+         \pgfusepath{draw}
+        \end{pgfscope}
+        \begin{pgfscope}
+         \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-0.7cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-0.7cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight}}
+         \pgfusepath{clip}
+         \pgfpathmoveto{\pgfpoint{0.75cm}{0cm}}
+         \pgfpathlineto{\pgfpoint{3.4cm}{\the\paperheight}}
+         \pgfusepath{draw}
+        \end{pgfscope}
+
+        % page number and TU/e logo
+        \pgfsetcolor{white}
+        % page number
+        \ifthenelse{\equal{#1}{full}}{
+          % draw frame number
+          \pgftext[at=\pgfpoint{0.252cm}{0.252cm},left,base]
+            {\tiny\insertframenumber/\inserttotalframenumber}%
+          % possibly draw page number
+          \ifbeamer@realpagenumbers
+            \pgfsetcolor{themecolor!25}
+            \pgftext[at=\pgfpoint{\the\paperwidth-0.189cm}{\the\paperheight-0.7cm},right,base]
+              {\tiny\insertpagenumber/\pageref{LastPage}}%
+          \fi
+        }{}
+        % TU/e logo
+        \pgftext[at=\pgfpoint{2.57cm}{\the\paperheight-0.7cm},left,base]{%
+          \TUElogo
+        }
+
+    \end{pgfpicture}%
+}
+
+
+
+\newcommand{\drawtitlebackground}{%
+    \begin{pgfpicture}{0cm}{0cm}{\the\paperwidth}{\the\paperheight}
+                                % Do some clipping first
+                                % Very annoying otherwise with psnup
+
+        \normalsize\selectfont
+
+        % background image
+        \pgftext[at=\pgfpoint{\the\paperwidth}{0.8cm},right,base]{\textcolor{black}{\includegraphics[height=\the\paperheight-2.2cm]{\titlebgimage}}}%
+        
+        % surface below the title
+        \pgfsetcolor{themecolor}
+        \pgfsetfillopacity{\titlebgimagetransparency}
+        \begin{pgfscope}
+         \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-5cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-5cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.4cm}}
+         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight-1.4cm}}
+         \pgfusepath{clip}
+         \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.9cm}{0cm}}
+         \pgfpathlineto{\pgfpoint{\the\paperwidth-3.25cm}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{\the\paperheight}}
+         \pgfpathlineto{\pgfpoint{0cm}{0cm}}
+         \pgfusepath{fill}
+        \end{pgfscope}
+        \pgfsetfillopacity{1}
+        
+        % red lines
+        \pgfsetlinewidth{0.3pt}
+        \pgfsetcolor{tuered}
+        \pgfpathmoveto{\pgfpoint{0cm}{0.8cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{0.8cm}}
+        \pgfusepath{draw}
+        \pgfpathmoveto{\pgfpoint{0cm}{\the\paperheight-1.4cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth}{\the\paperheight-1.4cm}}
+        \pgfusepath{draw}
+        \pgfpathmoveto{\pgfpoint{\the\paperwidth-5.9cm}{0cm}}
+        \pgfpathlineto{\pgfpoint{\the\paperwidth-3.25cm}{\the\paperheight}}
+        \pgfusepath{draw}
+        
+        % TU/e slogan: Where innovation starts
+        \ifbeamer@innovation
+          \pgftext[at=\pgfpoint{\the\paperwidth-5.6cm}{0.5cm},left,top]{\color{tuedarkblue}\normalfont\normalsize\tiny\selectfont\bfseries Where innovation starts}%
+        \fi
+
+        % Title
+        \pgftext[at=\pgfpoint{0.5cm}{\the\paperheight-1.9cm},left,top]{\color{white}\normalfont\fontsize{18}{18}\selectfont\bfseries%
+        \newlength{\titlewidth}
+        \ifdim\beamer@paperheight=9.00cm%
+          \setlength{\titlewidth}{11.19cm}
+        \else
+          \setlength{\titlewidth}{9.19cm}
+        \fi
+        \begin{minipage}[t][2.6cm][c]{\titlewidth} % height = 5 - 1.4 - 2 * 0.5 (margins) = 2.6
+        \raggedright
+        \inserttitle
+
+        \mbox{}\\[0.125cm]
+        \fontsize{9}{9}\selectfont\mdseries
+        \insertauthor
+        \end{minipage}
+        }%
+        
+        % TU/e logo
+        \pgftext[at=\pgfpoint{\the\paperwidth-4.67cm}{\the\paperheight-1.4cm},left,base]{%
+          \TUElogobig
+        }
+        
+        \pgftext[at=\pgfpoint{0.441cm}{0.5cm},left,top]{\color{tuered}\tiny\insertdate{}}%
+        \pgfsetcolor{black}
+        \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\the\paperwidth}{\the\paperheight}}
+        \pgfusepath{stroke}
+
+    \end{pgfpicture}%
+}
+
+\usebackgroundtemplate{\drawbackground}
+
+
+\useheadtemplate{}
+
+\usefoottemplate{}
+
+\useitemizeitemtemplate{\tiny\raise1.5pt\hbox{\color{beamerstructure}$\blacktriangleright$}}
+\usesubitemizeitemtemplate{\tiny\raise1.5pt\hbox{\color{beamerstructure}\textbullet}}
+\usesubsubitemizeitemtemplate{\tiny\raise1.5pt\hbox{\color{beamerstructure}\textbullet}}
+
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+
+\newlength{\frametitlewidth}
+\newlength{\frametitleheight}
+
+\setbeamercolor{frametitle}{fg=black,bg=themecolor}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamertemplate{frametitle}
+{
+\setlength{\frametitleheight}{1.5cm}
+\vspace*{-\frametitleheight}\begin{minipage}[t][\frametitleheight-0.2cm][b]{\the\paperwidth-1cm} % deduct 1cm because of margins
+\centering\insertframetitle\par
+\end{minipage}
+}
+
+\userightsidebartemplate{0cm}{
+%      \vfill
+%      \hskip -2cm
+%      \begin{beamercolorbox}[wd=2cm,leftskip=5pt,rightskip=1pt plus1fil,vmode]{}
+%                \vbox{}%
+%                \hfill\footnotesize\insertframenumber /\inserttotalframenumber\hskip1em\hfill\par%
+%                \vbox{}%
+%                \vskip-1.5ex%
+%      \end{beamercolorbox}
+}
+
+\setbeamertemplate{headline}
+{
+  \ifbeamer@official
+    \vspace{2.1cm}
+  \else
+    \vspace{1.3cm}
+  \fi
+}
+
+\mode<all>
+
+\ifbeamer@tocslides
+  \newcommand{\tue@atbeginsection}{
+    \bgroup
+    \ifthenelse{\equal{\tocplain}{true}}{\usebackgroundtemplate{\drawbackground[plain]}}{}
+    \hypersetup{
+      hidelinks
+    }
+    \setbeamercolor{section in toc}{use=alerted text,fg=alerted text.fg}
+    \setbeamercolor{section in toc shaded}{fg=black}
+    \setbeamertemplate{section in toc shaded}[default][100]
+    \setbeamercolor{subsection in toc}{fg=black}
+    \setbeamercolor{subsection in toc shaded}{fg=black}
+    \setbeamertemplate{subsection in toc shaded}[default][100]
+    \begin{frame}{}
+      \vspace*{-3em}
+      \ifthenelse{\equal{\tocstyle}{all}}{
+      		\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+      }{      
+       	\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+      }
+    \end{frame}
+    \egroup
+    \ifthenelse{\equal{\tocplain}{true}}{\addtocounter{framenumber}{-1}}
+  }
+  
+  \newcommand{\tue@atbeginsubsection}{
+    \bgroup
+    \ifthenelse{\equal{\tocplain}{true}}{\usebackgroundtemplate{\drawbackground[plain]}}{}
+    \hypersetup{
+      hidelinks
+    }
+    \setbeamercolor{section in toc}{fg=black}
+    \setbeamercolor{section in toc shaded}{fg=black}
+    \setbeamertemplate{section in toc shaded}[default][100]
+    \setbeamercolor{subsection in toc}{use=alerted text,fg=alerted text.fg}
+    \setbeamercolor{subsection in toc shaded}{fg=black}
+    \setbeamertemplate{subsection in toc shaded}[default][100]
+    \begin{frame}{}
+      \vspace*{-3em}
+      \tableofcontents[currentsubsection]
+    \end{frame}
+    \egroup
+    \ifthenelse{\equal{\tocplain}{true}}{\addtocounter{framenumber}{-1}}
+  }
+  
+  \AtBeginSection[] {\tue@atbeginsection}
+  \AtBeginSubsection[] {\tue@atbeginsubsection}
+  \newcommand{\disabletocslidessection}{\AtBeginSection[]{}}
+  \newcommand{\enabletocslidessection}{\AtBeginSection[]{\tue@atbeginsection}}
+  \newcommand{\disabletocslidessubsection}{\AtBeginSubsection[]{}}
+  \newcommand{\enabletocslidessubsection}{\AtBeginSubsection[]{\tue@atbeginsubsection}}
+\fi

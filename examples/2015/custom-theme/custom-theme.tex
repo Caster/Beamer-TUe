@@ -1,0 +1,33 @@
+\documentclass[12pt, aspectratio=169]{beamer} % aspectratio = either 43 or 169
+
+% here we use a different theme color, there are many to choose from
+% refer to the README file for a list of options
+\usetheme[department=winuk,theme=\#00892C]{tue2015}
+\mode<presentation>
+
+% title and author
+\title{Custom theme}
+\author{Thom Castermans}
+
+% document
+\begin{document}
+
+\begin{titleframe}
+\end{titleframe}
+
+\begin{frame}{Hello strangely coloured world!}
+  \begin{itemize}
+    \item This is a simple presentation using the TU/e Beamer theme
+    \item It should use the correct font automatically, or issue a warning
+    \item The title bar should have a custom, greenish colour
+    \begin{itemize}
+      \item Note that doing this is \emph{not} recommended!
+      \item The TU/e has a style guide with colours, that are predefined in this Beamer
+
+      theme, you should really use those, \alert{seriously}
+      \item But if you really, really, really, want to... you can do this
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\end{document}

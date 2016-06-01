@@ -1,0 +1,77 @@
+\mode<presentation>
+
+\RequirePackage{tuestyle2015}
+\definecolor{themecolor}{HTML}{F73131} % default is PMS Warm Red
+\definecolor{themetextcolor}{HTML}{FFFFFF}
+
+% -- http://tex.stackexchange.com/a/100213/23145
+% this is found in latex.ltx:
+% \def\@car#1#2\@nil{#1}
+\def\iffirsttoken#1#2{%
+  % define \@first@token to be the once expanded \@car of the first argument
+  % i.e. the first token or balanced group:
+  \expandafter\def\expandafter\@first@token\expandafter{\@car#1\@nil}%
+  % test if the expansion of \@first@token is the same as #2:
+  \expandafter\ifx\@first@token#2\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+% -- http://tex.stackexchange.com/a/100220/23145
+% strip starting \# from string
+\newcommand\strippound[1]{\expandafter\ifx\expandafter\##1\else#1\fi}
+
+\DeclareOptionBeamer{theme}[red]{%
+% PMS Warm Red
+\ifthenelse{\equal{#1}{red}}{               \definecolor{themecolor}{HTML}{F73131}}{}
+\ifthenelse{\equal{#1}{pms-warm-red}}{      \definecolor{themecolor}{HTML}{F73131}}{}
+% PMS Process Cyan
+\ifthenelse{\equal{#1}{cyan}}{              \definecolor{themecolor}{HTML}{00A2DE}}{}
+\ifthenelse{\equal{#1}{pms-process-cyan}}{  \definecolor{themecolor}{HTML}{00A2DE}}{}
+% PMS 300
+\ifthenelse{\equal{#1}{blue}}{              \definecolor{themecolor}{HTML}{0066CC}}{}
+\ifthenelse{\equal{#1}{pms-300}}{           \definecolor{themecolor}{HTML}{0066CC}}{}
+% PMS 375
+\ifthenelse{\equal{#1}{green}}{             \definecolor{themecolor}{HTML}{84D200}}{}
+\ifthenelse{\equal{#1}{pms-375}}{           \definecolor{themecolor}{HTML}{84D200}}{}
+% PMS 137
+\ifthenelse{\equal{#1}{orange}}{            \definecolor{themecolor}{HTML}{FF9A00}}{}
+\ifthenelse{\equal{#1}{pms-137}}{           \definecolor{themecolor}{HTML}{FF9A00}}{}
+% PMS 206
+\ifthenelse{\equal{#1}{darkred}}{           \definecolor{themecolor}{HTML}{D6004A}}{}
+\ifthenelse{\equal{#1}{pms-206}}{           \definecolor{themecolor}{HTML}{D6004A}}{}
+% PMS 226
+\ifthenelse{\equal{#1}{darkpink}}{          \definecolor{themecolor}{HTML}{D6007B}}{}
+\ifthenelse{\equal{#1}{pms-226}}{           \definecolor{themecolor}{HTML}{D6007B}}{}
+% PMS 253
+\ifthenelse{\equal{#1}{purple}}{            \definecolor{themecolor}{HTML}{AD20AD}}{}
+\ifthenelse{\equal{#1}{pms-253}}{           \definecolor{themecolor}{HTML}{AD20AD}}{}
+% PMS 2748
+\ifthenelse{\equal{#1}{darkblue}}{          \definecolor{themecolor}{HTML}{101073}}{}
+\ifthenelse{\equal{#1}{pms-2748}}{          \definecolor{themecolor}{HTML}{101073}}{}
+% PMS Yellow 012
+\ifthenelse{\equal{#1}{yellow}}{            \definecolor{themecolor}{HTML}{FFDD00} \definecolor{themetextcolor}{HTML}{000000}}{}
+\ifthenelse{\equal{#1}{pms-yellow-012}}{    \definecolor{themecolor}{HTML}{FFDD00} \definecolor{themetextcolor}{HTML}{000000}}{}
+% PMS 396
+\ifthenelse{\equal{#1}{lime}}{              \definecolor{themecolor}{HTML}{CEDF00}}{}
+\ifthenelse{\equal{#1}{pms-396}}{           \definecolor{themecolor}{HTML}{CEDF00}}{}
+% PMS Green
+\ifthenelse{\equal{#1}{aqua}}{              \definecolor{themecolor}{HTML}{00AC82}}{}
+\ifthenelse{\equal{#1}{pms-green}}{         \definecolor{themecolor}{HTML}{00AC82}}{}
+% PMS 3135
+\ifthenelse{\equal{#1}{marine}}{            \definecolor{themecolor}{HTML}{0092B5}}{}
+\ifthenelse{\equal{#1}{pms-3135}}{          \definecolor{themecolor}{HTML}{0092B5}}{}
+% PMS White
+\ifthenelse{\equal{#1}{white}}{             \definecolor{themecolor}{HTML}{FFFFFF} \definecolor{themetextcolor}{HTML}{000000}}{}
+\ifthenelse{\equal{#1}{pms-white}}{         \definecolor{themecolor}{HTML}{FFFFFF} \definecolor{themetextcolor}{HTML}{000000}}{}
+% Custom?
+\iffirsttoken{#1}{\#}{                      \definecolor{themecolor}{HTML}{\strippound{#1}}}{}
+}
+\ProcessOptionsBeamer
+
+
+\mode<all>
+
+\setbeamercolor{structure}{fg=themecolor}
+\setbeamercolor{alerted text}{fg=themecolor}
