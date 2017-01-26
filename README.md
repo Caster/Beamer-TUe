@@ -10,7 +10,7 @@ Table of contents
   * [Theme colours](#theme-colours)
   * [Quoting](#quoting)
   * [TU/e font installation](#tue-font-installation)
-    * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-MiKTeX)
+    * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-miktex)
 
 Usage instructions
 ------------------
