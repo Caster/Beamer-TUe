@@ -266,15 +266,15 @@ at TeX.SE](http://tex.stackexchange.com/a/95456/23145), but has been changed so
 that it specifically targets the TU/e font installation, instead of Frutiger.
 
 #### Create a local texmf tree
-If no local texmf tree exists, you can create the folder `C:/localtexmf`. The
+If no local texmf tree exists, you can create the folder `C:\localtexmf`. The
 subtrees you need depend on what you want to install into this directory, but in
 your case it should be sufficient to include the following:
 
-    C:/localtexmf/doc/latex
-                 /tex/latex
+    C:\localtexmf\doc\latex
+    C:\localtexmf\tex\latex
 
 Then go to MikTeX's *Settings (Admin)* in the Start Menu, click on the *Roots*
-tab and add `C:/localtexmf`. Next click on the *General* tab and click on
+tab and add `C:\localtexmf`. Next click on the *General* tab and click on
 *Refresh FNDB*.
 
 Complete instructions for the creation of a local texmf tree in MiKTeX can be
@@ -284,16 +284,16 @@ TDS compliance can be found [here](http://tug.org/tds/tds.html).
 #### Install fonts
 Download
 [`latex_huisstijl.zip`](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip)
-from this repository and unpack it in your `C:/localtexmf` folder (or copy its
+from this repository and unpack it in your `C:\localtexmf` folder (or copy its
 contents there). This means that for example the file
 
-    dvips/config/tue.map
+    fonts\map\tue.map
 
-would go in `C:/localtexmf/dvips/config`, the folder
+would go in `C:\localtexmf\fonts\map`, the folder
 
-    fonts/tfm/tue/huisstyl
+    fonts\tfm\tue\huisstyl
 
-would go in `C:/localtexmf/fonts/tfm/tue/huisstyl`, et cetera.
+would go in `C:\localtexmf\fonts\tfm\tue\huisstyl`, et cetera.
 
 Next, on the Windows command prompt, type
 
