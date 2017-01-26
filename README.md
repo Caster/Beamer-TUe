@@ -10,7 +10,7 @@ Table of contents
   * [Theme colours](#theme-colours)
   * [Quoting](#quoting)
   * [TU/e font installation](#tue-font-installation)
-    * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-miktex)
+    * [Font installation on Windows (MiKTeX)](#font-installation-on-windows-MiKTeX)
 
 Usage instructions
 ------------------
@@ -182,7 +182,7 @@ You may notice that the font is incorrect (and there may be warnings coming from
 LaTeX telling you so). In that case, you probably need to install the TU/e font
 in such a way that LaTeX can use it. On Linux and Mac, you can do so as follows
 below. On Windows, refer to [the Windows
-subsection](#font-installation-on-windows-miktex). If you encounter a problem,
+subsection](#font-installation-on-windows-MiKTeX). If you encounter a problem,
 do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues).
 In case there is a problem with Beamer-TUe, you are welcome to open a [pull
 request](https://github.com/Caster/Beamer-TUe/pulls).
@@ -265,21 +265,28 @@ the steps in this section to make it work. The steps are taken from [this answer
 at TeX.SE](http://tex.stackexchange.com/a/95456/23145), but has been changed so
 that it specifically targets the TU/e font installation, instead of Frutiger.
 
-#### Create a local texmf tree
-If no local texmf tree exists, you can create the folder `C:\localtexmf`. The
-subtrees you need depend on what you want to install into this directory, but in
-your case it should be sufficient to include the following:
+#### Create a local TeXMF tree
+LaTeX packages, fonts, document classes and related files are stored in a
+specific way in a directory that is called a TeXMF tree. You can have more than
+one TeXMF tree on your system and your LaTeX installation will check them in
+order to find packages, fonts, et cetera. If you do not have one yet, you should
+create one and let MiKTeX know where it is.
+
+First, create a folder. This can be any folder (but avoid spaces in the path
+name and do not select a folder in your MiKTeX installation), we will
+use`C:\localtexmf` as an example in this README. The subtrees you need depend on
+what you want to install into this directory, but in our case it should be
+sufficient to create the following directories:
 
     C:\localtexmf\doc\latex
     C:\localtexmf\tex\latex
 
-Then go to MikTeX's *Settings (Admin)* in the Start Menu, click on the *Roots*
-tab and add `C:\localtexmf`. Next click on the *General* tab and click on
-*Refresh FNDB*.
+Again, `C:\localtexmf` can be any path. Now go to MiKTeX's *Settings (Admin)* in
+the Start Menu, click on the *Roots* tab and add `C:\localtexmf` (or your custom
+path). Next click on the *General* tab and click on *Refresh FNDB*.
 
-Complete instructions for the creation of a local texmf tree in MiKTeX can be
-found [here](http://tex.stackexchange.com/a/69484/14497). More information on
-TDS compliance can be found [here](http://tug.org/tds/tds.html).
+Excellent more detailed instructions for the creation of a local TeXMF tree in
+MiKTeX can be found [on TeX.SX](http://tex.stackexchange.com/a/69484/14497).
 
 #### Install fonts
 Download
@@ -295,6 +302,11 @@ would go in `C:\localtexmf\fonts\map`, the folder
 
 would go in `C:\localtexmf\fonts\tfm\tue\huisstyl`, et cetera.
 
+Now be sure to close any programs related to MiKTeX. This can be MiKTeX's
+*Settings (Admin)* window if you just created a local TeXMF tree, TeXworks, et
+cetera. These programs can lock files that we need to edit, hence they need to
+be closed,
+
 Next, on the Windows command prompt, type
 
     initexmf --admin --edit-config-file updmap
@@ -308,9 +320,10 @@ and save. Afterwards, run
      initexmf -u
      initexmf --mkmaps
 
-Finally, refresh the FNDB. Try running `kpsewhich tue.map` on the Windows
-command prompt. It should return the location of the map file; if it doesn't,
-somehow it is not visible to TeX. Otherwise, you are done and are now able to
-use the `zmb` font family in LaTeX and use the TU/e font! Do not forget to
+Finally, refresh the FNDB. You can do so in the *General* tab of MiKTeX's
+*Settings (Admin)*. Try running `kpsewhich tue.map` on the Windows command
+prompt. It should return the location of the map file; if it doesn't, somehow it
+is not visible to TeX. Otherwise, you are done and are now able to use the `zmb`
+font family in LaTeX and use the TU/e font! Do not forget to
 `\usepackage[T1]{fontenc}` however. All examples in this repository use the
 `zmb` font family and hence should look better after you have done all this.
