@@ -187,7 +187,7 @@ do not hesitate to open an [issue](https://github.com/Caster/Beamer-TUe/issues).
 In case there is a problem with Beamer-TUe, you are welcome to open a [pull
 request](https://github.com/Caster/Beamer-TUe/pulls).
 
-  1. [Download](https://github.com/Caster/Beamer-TUe/blob/master/TUe-fonts/latex_huisstijl.zip?raw=true)
+  1. [Download](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip)
 the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the
 repository. You can skip this step if you cloned the repository.
 
@@ -289,10 +289,10 @@ Excellent more detailed instructions for the creation of a local TeXMF tree in
 MiKTeX can be found [on TeX.SX](http://tex.stackexchange.com/a/69484/14497).
 
 #### Install fonts
-Download
-[`latex_huisstijl.zip`](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip)
-from this repository and unpack it in your `C:\localtexmf` folder (or copy its
-contents there). This means that for example the file
+[Download](https://github.com/Caster/Beamer-TUe/raw/master/TUe-fonts/latex_huisstijl.zip)
+the `latex_huisstijl.zip` ZIP archive from the `TUe-fonts` folder in the repository
+and unpack it in your `C:\localtexmf` folder (or copy its contents there). This
+means that for example the file
 
     fonts\map\tue.map
 
