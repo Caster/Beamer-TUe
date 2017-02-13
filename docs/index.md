@@ -224,7 +224,8 @@ are two options depending on if your installation is system-wide or not.
          them and without `sudo` per command):
 
         <pre><b>$</b> sudo mktexlsr
-<b>$</b> sudo updmap-sys --enable Map=tue.map</pre>
+<b>$</b> sudo updmap-sys --enable Map=tue.map
+<b>$</b> sudo updmap-sys</pre>
 
      2. *(single user)* Open a command line and run the following command (not as
          root):
