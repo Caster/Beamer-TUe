@@ -230,7 +230,8 @@ are two options depending on if your installation is system-wide or not.
      2. *(single user)* Open a command line and run the following command (not as
          root):
 
-         <pre><b>$</b> updmap --enable Map=tue.map</pre>
+         <pre><b>$</b> updmap --enable Map=tue.map
+<b>$</b> updmap</pre>
 
 Congratulations, you should now be able to use the `zmb` font family in LaTeX
 and use the TU/e font! Do not forget to `\usepackage[T1]{fontenc}` however.
